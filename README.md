@@ -11,6 +11,11 @@ npm install -g nodemon coffee-script coffee-react babel-cli babel-core babel-pre
 
 npm install -g coffee-reactify coffeeify del gulp gulp-autoprefixer gulp-babel gulp-browserify gulp-cache gulp-cjsx gulp-coffee gulp-concat gulp-consolidate gulp-cssnano gulp-eslint gulp-htmlmin gulp-iconfont gulp-iconfont-css gulp-imagemin gulp-if gulp-group-css-media-queries gulp-less gulp-load-plugins gulp-newer gulp-notify gulp-plumber gulp-rename gulp-rollup gulp-sass gulp-size gulp-sourcemaps gulp-uglify gulp-useref gulp-util yargs
 
+? npm install -g --unsafe-perm node-sass
+
+? npm install -g clean-css-cli
+
+
 pip install --upgrade pip setuptools
 
 pip install python-memcached redis psycopg2 pytz Pillow PyExecJS PyReact
