@@ -1,0 +1,7 @@
+# http://www.robotstxt.org/robotstxt.html
+
+Sitemap: http://{{ host|default:request.site.domain }}/sitemap.xml
+
+User-agent: *
+Disallow: /admin
+Host: {{ host|default:request.site.domain }}

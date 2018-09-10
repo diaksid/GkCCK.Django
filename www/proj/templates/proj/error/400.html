@@ -1,0 +1,11 @@
+{% extends 'proj/layout/error.html' %}
+{% load i18n %}
+
+
+{% block title %}400 Request Not Allowed{% endblock title %}
+
+
+{% block content %}
+    <h1>{% trans 'Недопустимый запрос' %}</h1>
+    <h2>Error400</h2>
+{% endblock content %}

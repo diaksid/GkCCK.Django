@@ -1,0 +1,63 @@
+{% load i18n %}
+
+
+<form id="{{ form.prefix }}-form"
+      {% if class %}class="{{ class }}"{% endif %}
+      action="{% url 'postbox:send' %}"
+      method="post"
+      {% if form.use_required_attribute is not True %}novalidate{% endif %}
+>
+    {% csrf_token %}
+
+    <input name="prefix"
+           type="hidden"
+           value="{{ form.prefix }}"
+    >
+
+    {% for field in form %}
+        <div class="form-group{% if field.errors %} has-error{% endif %}">
+            <label class="sr-only"
+                   for="{{ field.id_for_label }}"
+            >{% trans field.label %}</label>
+
+            {{ field|safe }}
+
+            {% if field.errors %}
+                <span class="help-block">{{ field.errors }}</span>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    <div class="form-group">
+        <div class="form-check">
+            <label class="form-check-label">
+                <input class="form-check-input"
+                       type="checkbox"
+                       onchange="privacy_onchange(this)">
+                <span class="text-muted font-weight-light">Согласие на предоставление персональной информации</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group pull-last">
+        {% if form.use_required_attribute is True %}
+            <p class="text-muted font-weight-light pull-xs-right">
+                <span class="icon icon-exclamation-circle text-cyan"
+                      aria-hidden="true"></span>
+                - обязательные поля
+            </p>
+        {% endif %}
+        <button id="{{ form.prefix }}-submit"
+                class="btn btn-lg btn-primary"
+                type="submit"
+                disabled=True,
+        ><span class="icon icon-send"></span></button>
+    </div>
+</form>
+
+
+<script>
+    function privacy_onchange(c) {
+        document.getElementById('{{ form.prefix }}-submit').disabled = !c.checked;
+    }
+</script>

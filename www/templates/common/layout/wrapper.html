@@ -1,0 +1,96 @@
+{% load compress proj_helpers %}
+
+
+<!doctype html>
+
+
+<html lang="{{ LANGUAGE_CODE }}"
+      itemscope
+      itemtype="http://schema.org/{{ schema.page|default:'WebPage' }}"
+>
+
+
+<head>
+    <meta charset="utf-8">
+
+    {% block meta %}
+        {% if robots %}
+            <meta name="robots"
+                  content="{{ robots }}">
+        {% elif object.robots %}
+            <meta name="robots"
+                  content="{{ object.robots }}">
+        {% else %}
+            <meta name="robots"
+                  content="index,follow">
+        {% endif %}
+
+        {% if title %}
+            <title>{{ title|minify }}{% if caption != False %} · {{ caption|default:'ГК «ССК»' }}{% endif %}</title>
+        {% else %}
+            <title>{{ object.title }}{% if caption != False %} · {{ caption|default:'ГК «ССК»' }}{% endif %}</title>
+        {% endif %}
+
+        {% if description %}
+            <meta name="description"
+                  content="{{ description|minify }}">
+        {% elif object.description %}
+            <meta name="description"
+                  content="{{ object.description }}">
+        {% endif %}
+
+        {% if keywords %}
+            <meta name="keywords"
+                  content="{{ keywords|minify|lower }}">
+        {% elif object.keywords %}
+            <meta name="keywords"
+                  content="{{ object.keywords|lower }}">
+        {% endif %}
+    {% endblock meta %}
+
+    {% block link %}{% endblock link %}
+
+    {% include 'proj/include/head.html' with application_name='gkcck' %}
+
+    {% compress js inline %}
+        <script type="text/coffeescript">
+            ((window, document) ->
+                touch = window.ontouchstart? or (window.DocumentTouch? and document instanceof DocumentTouch)
+                document.documentElement.className = "js #{ if touch then 'touchevents' else 'no-touchevents'}") window, document
+        </script>
+    {% endcompress %}
+
+    <!--[if lt IE 9]>
+        <script src="{{ STATIC_URL }}js/lib/html5bility{% if not debug %}.min{% endif %}.js"></script>
+    <![endif]-->
+</head>
+
+
+<body>
+{% block header %}
+    {% include 'common/include/header.html' %}
+{% endblock header %}
+
+{% block top %}
+    {% include 'common/include/breadcrumb.html' %}
+{% endblock top %}
+
+{% block main %}{% endblock main %}
+
+<!--noindex-->
+{% block bottom %}{% endblock bottom %}
+
+{% block footer %}{% endblock footer %}
+
+{% block navbar %}{% endblock navbar %}
+
+{% block messages %}
+    {% include 'proj/include/messages.html' %}
+{% endblock messages %}
+
+{% block foot %}{% endblock foot %}
+<!--/noindex-->
+</body>
+
+
+</html>

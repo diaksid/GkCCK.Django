@@ -1,0 +1,51 @@
+{% extends 'www/layout/entity.html' %}
+{% load compress %}
+
+
+{% block link %}
+    {{ block.super }}
+
+    {% compress css inline %}
+        <style>
+            #content li {
+                margin-bottom: 1.5rem;
+            }
+
+            #content li a {
+                display: block;
+                padding: .5rem 1rem;
+                border-radius: .25rem;
+            }
+
+            #content li a:hover {
+                background: rgba(0, 0, 0, .05)
+            }
+        </style>
+    {% endcompress %}
+{% endblock link %}
+
+
+{% block content %}
+    <div class="container">
+        <ol class="lead">
+            <li>
+                <a
+                        href="{{ MEDIA_URL }}www/info/00.pdf"
+                        target="_blank"
+                >Учётная карточка ООО «ССК»</a>
+            </li>
+
+            <li>
+                <a
+                        href="{{ MEDIA_URL }}www/info/01.pdf"
+                        target="_blank"
+                >Учётная карточка ООО «ССК Проект»</a>
+            </li>
+        </ol>
+    </div>
+{% endblock content %}
+
+
+{% block bottom %}
+    {% include 'www/include/aside/permits.html' %}
+{% endblock bottom %}

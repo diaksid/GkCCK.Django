@@ -1,0 +1,57 @@
+{% extends 'www/layout/entity.html' %}
+{% load proj_helpers proj_images %}
+
+
+{% block content %}
+    {% for object in object_list %}
+        <div class="dataset striped"
+             itemprop="dataset"
+             itemscope
+             itemtype="http://schema.org/Dataset"
+        >
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-lg-9">
+                        <h3 class="text-uppercase m-t-0"
+                            itemprop="name"
+                        >
+                            <a class="duplet player"
+                               href="{{ object.get_absolute_url }}"
+                               itemprop="mainEntityOfPage"
+                            >{{ object.name|safe }}</a>
+                        </h3>
+
+                        <p class="text-lg">{{ object.address|safe }}</p>
+
+                        {% for activity in object.activities %}
+                            <h5 class="text-uppercase font-weight-light">
+                                <a href="{{ activity.get_absolute_url }}"
+                                >{{ activity.get_label }}</a>
+                            <h5>
+                        {% empty %}
+                        {% endfor %}
+                    </div>
+
+
+                    <a class="col-sm-4 col-lg-3 text-xs-right hidden-xs-down"
+                       href="{{ object.get_absolute_url }}"
+                       itemprop="url"
+                    >
+                        {% with size='192' class='img-fluid bg-cover shadow' lazy='canvas' %}
+                            {% if object.cover %}
+                                {% thumb object.cover.file alt=object.cover.get_alt %}
+                            {% else %}
+                                {% thumb %}
+                            {% endif %}
+                        {% endwith %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}
+
+
+{% block bottom %}
+    {% include 'www/include/aside/permits.html' %}
+{% endblock bottom %}

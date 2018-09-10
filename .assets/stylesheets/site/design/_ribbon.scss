@@ -1,0 +1,40 @@
+
+.ribbon {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
+  transition: all .4s;
+
+  &.narrow {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  &.light {
+    background: $gray-lighter;
+  }
+
+  &.dark {
+    background: $gray-dark;
+  }
+
+  &.poster {
+    font-size: .875rem;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+  }
+}
+
+a,
+.js .onclick {
+  &.ribbon:hover {
+    color: $gray-lightest;
+    background: $link-hover-color;
+  }
+}

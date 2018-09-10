@@ -1,0 +1,29 @@
+{% load proj_images %}
+
+
+{% if object %}
+    <figure class="item{% if class %} {{ class }}{% endif %}"
+            itemprop="dataset"
+            itemscope
+            itemtype="http://schema.org/Dataset"
+    >
+        <a href="{{ object.get_absolute_url }}"
+           itemprop="mainEntityOfPage"
+        >
+            {% with class='img-fluid bg-cover shadow m-x-auto' %}
+                {% if object.cover %}
+                    {% thumb object.cover.file alt=object.cover.get_alt %}
+                {% else %}
+                    {% thumb %}
+                {% endif %}
+            {% endwith %}
+        </a>
+
+        <figcaption>
+            <h3 class="title"
+                itemprop="name"
+            >{{ object.get_label }}</h3>
+            <div class="hidden-md-down">{{ object.address|safe }}</div>
+        </figcaption>
+    </figure>
+{% endif %}

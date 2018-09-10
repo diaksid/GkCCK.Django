@@ -1,0 +1,13 @@
+@import "site/variables";
+// -------------------------
+@import "base";
+@import "attention_seekers/pulse";
+//@import "animate/bouncing_entrances/bounceIn";
+@import "fading_entrances/fadeIn";
+//@import "animate/fading_exits/fadeOut";
+@import "fading_exits/fadeOutDown";
+@import "zooming_entrances/zoomIn";
+
+.wow {
+  visibility: hidden;
+}

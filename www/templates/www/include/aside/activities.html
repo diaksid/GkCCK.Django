@@ -1,0 +1,129 @@
+{% load proj_helpers cck_activities %}
+
+
+<aside id="activities"
+       class="mosaic container-fluid"
+       itemscope
+       itemtype="http://schema.org/DataCatalog"
+>
+    <div class="row">
+        <article class="banner col-md-6 bg-faded"
+                 itemprop="dataset"
+                 itemscope
+                 itemtype="http://schema.org/Dataset"
+        >
+            {% get_activity 1 as object %}
+            <a href="{{ object.get_absolute_url }}"
+               itemprop="mainEntityOfPage"
+            >
+                <canvas class="frame"
+                        width="800"
+                        height="600"
+                        data-lazy="{{ MEDIA_URL }}www/activities/00.jpg"
+                ></canvas>
+                <link itemprop="image"
+                      href="{{ MEDIA_URL }}www/activities/00.jpg">
+
+                <header class="header">
+                    <h3 class="name"
+                        itemprop="name"
+                    >{{ object.get_label }}</h3>
+                    <div class="btn btn-outline-secondary">
+                        подробнее
+                       <span class="icon icon-chevron-right"
+                             aria-hidden="true"
+                       ></span>
+                    </div>
+                </header>
+            </a>
+        </article>
+
+
+        <article class="banner col-md-3 bg-faded"
+                 itemprop="dataset"
+                 itemscope
+                 itemtype="http://schema.org/Dataset"
+        >
+            {% get_activity 4 as object %}
+            <a href="{{ object.get_absolute_url }}"
+               itemprop="mainEntityOfPage"
+            >
+                <canvas class="frame"
+                        width="400"
+                        height="300"
+                        data-lazy="{{ MEDIA_URL }}www/activities/02.jpg"
+                ></canvas>
+                <link itemprop="image"
+                      href="{{ MEDIA_URL }}www/activities/02.jpg">
+
+                <header class="header">
+                    <h3 class="name"
+                        itemprop="name"
+                    >{{ object.get_label }}</h3>
+                </header>
+            </a>
+        </article>
+
+
+        <article class="banner col-md-3 half bg-faded"
+                 itemprop="dataset"
+                 itemscope
+                 itemtype="http://schema.org/Dataset"
+        >
+            {% get_activity 5 as object %}
+            <a href="{{ object.get_absolute_url }}"
+               itemprop="mainEntityOfPage"
+            >
+                <canvas class="frame"
+                        width="400"
+                        height="300"
+                        data-lazy="{{ MEDIA_URL }}www/activities/03.jpg"
+                ></canvas>
+                <link itemprop="image"
+                      href="{{ MEDIA_URL }}www/activities/03.jpg">
+
+                <header class="header">
+                    <h3 class="name"
+                        itemprop="name"
+                    >{{ object.get_label }}</h3>
+                </header>
+            </a>
+        </article>
+
+
+        <article class="banner frame-top col-md-6 bg-faded"
+                 itemprop="dataset"
+                 itemscope
+                 itemtype="http://schema.org/Dataset"
+        >
+            {% get_activity 2 as object %}
+            <a href="{{ object.get_absolute_url }}"
+               itemprop="mainEntityOfPage"
+            >
+                <canvas class="frame"
+                        width="800"
+                        height="300"
+                        data-lazy="{{ MEDIA_URL }}www/activities/01.jpg"
+                ></canvas>
+                <link itemprop="image"
+                      href="{{ MEDIA_URL }}www/activities/01.jpg">
+
+                <header class="header">
+                    <h3 class="name"
+                        itemprop="name"
+                    >{{ object.get_label }}</h3>
+                </header>
+            </a>
+        </article>
+
+
+        <h2 class="banner col-md-12"
+            itemprop="name"
+        >
+            <a class="ribbon poster light"
+               href="{% url 'activities:list' %}"
+               itemprop="url"
+            >Все области деятельности</a>
+        </h2>
+    </div>
+</aside>

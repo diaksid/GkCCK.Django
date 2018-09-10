@@ -1,0 +1,25 @@
+
+<div
+    id="breadcrumb"
+    class="container-fluid"
+>
+    <div class="row">
+        {% if breadcrumbs %}
+            <nav class="breadcrumb col-sm-9 hidden-xs-down">
+                {% for href, label in breadcrumbs %}
+                    {% if True %}
+                            <a
+                                href="{{ href }}"
+                                itemprop="isPartOf"
+                            >{{ label }}</a>
+                    {% else %}
+                        <span>{{ item }}</span>
+                    {% endif %}
+                {% endfor %}
+            </nav>
+            {% include 'common/include/social.html' with class='col-xs-12 col-sm-3 text-sm-right' %}
+        {% else %}
+            {% include 'common/include/social.html' with class='col-xs-12 col-sm-3 offset-sm-9 text-sm-right' %}
+        {% endif %}
+    </div>
+</div>

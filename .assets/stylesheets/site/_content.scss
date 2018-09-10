@@ -1,0 +1,138 @@
+#content {
+  padding: 5rem 0;
+  .header {
+    margin: 0 0 3rem;
+    color: #000;
+    font-size: $font-size-h1;
+    letter-spacing: 1px;
+    small {
+      display: block;
+      font-size: 50%;
+      font-weight: 300;
+      line-height: 1.25;
+    }
+  }
+  header {
+    margin: 0 0 2rem;
+    .header {
+      margin: 0 0 1rem;
+    }
+    .header:last-child {
+      margin: 0;
+    }
+  }
+  .card {
+    overflow: hidden;
+  }
+  .ymap {
+    overflow: hidden;
+    height: 400px;
+    background: url("#{$img-path}/loader/line.208x13.gif") center no-repeat transparentize($gray-lightest, .7);
+    @include media-breakpoint-down(md) {
+      height: 320px;
+    }
+    @include media-breakpoint-down(xs) {
+      height: 256px;
+    }
+    &.card {
+      padding: .25rem;
+    }
+  }
+  & + .page {
+    margin-bottom: 3.5rem;
+  }
+  .redactor-toolbar {
+    @extend .control-required;
+    background-color: $color-white-light;
+  }
+}
+
+.paginator {
+  height: 0;
+
+  .pagination {
+    position: relative;
+    top: -3.375rem;
+    margin: 0;
+  }
+}
+
+.social {
+  .icon {
+    color: transparentize($color-cyan, .1) !important;
+    font-size: inherit;
+    line-height: inherit;
+    + .icon {
+      margin-left: 7%;
+    }
+  }
+}
+
+.dataset {
+  margin: 0 0 5rem;
+  &:last-child {
+    margin: 0;
+  }
+  &.striped {
+    margin: 0;
+    padding: 2.5rem 0;
+    &:first-child {
+      padding-top: 0;
+    }
+    &:nth-child(even) {
+      background: transparentize($gray-lightest, .7);
+    }
+  }
+}
+
+.albom {
+  overflow: hidden;
+  margin-top: ($font-size-h1 * $headings-line-height);
+  margin-bottom: -1.5rem;
+  &:first-child {
+    margin-top: .3125rem;
+    margin-bottom: 0;
+  }
+  figcaption {
+    padding-top: .75rem;
+    font-size: .75rem;
+    .title {
+      margin: 0 0 .25rem;
+      color: $color-cyan;
+      font-size: 1rem;
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+  img {
+    display: inline-block;
+  }
+  .item {
+    margin-bottom: 2rem;
+  }
+}
+
+#breadcrumb {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  border-bottom: 1px solid $gray-lighter;
+  .social {
+    font-size: 110%;
+  }
+}
+
+#messages {
+  position: fixed;
+  z-index: $zindex-modal;
+  top: 0;
+  left: 0;
+  width: 100%;
+  .alert {
+    margin: .25rem .5rem;
+    min-height: $navbar-fixed-height;
+    box-shadow: 0 1px 12px rgba(0, 0, 0, .5);
+  }
+}

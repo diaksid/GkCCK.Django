@@ -1,0 +1,23 @@
+{% if google_plus or twitter %}
+    <nav class="social{% if class %} {{ class }}{% endif %}">
+        {% if twitter %}
+            <a rel="nofollow"
+               class="icon icon-twitter text-href"
+               href="{{ twitter }}"
+               target="_blank"
+               aria-hidden="true"
+               itemprop="relatedLink"
+            ></a>
+        {% endif %}
+
+        {% if google_plus %}
+            <a rel="nofollow"
+               class="icon icon-google-plus text-href"
+               href="{{ google_plus }}"
+               target="_blank"
+               aria-hidden="true"
+               itemprop="relatedLink"
+            ></a>
+        {% endif %}
+    </nav>
+{% endif %}

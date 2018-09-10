@@ -1,0 +1,29 @@
+<!doctype html>
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
+
+
+<head>
+    <meta charset="utf-8">
+    <title>PROJ CONTENT</title>
+
+    <meta name="robots" content="none">
+
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link type="image/vnd.microsoft.icon" href="/favicon.ico" rel="shortcut icon">
+    <link type="image/png" href="/favicon.png" rel="shortcut icon">
+<head>
+
+
+<body>
+    {% block name %}{% endblock name %}
+    {% block content %}{% endblock content %}
+</body>
+
+
+</html>

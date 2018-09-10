@@ -1,0 +1,30 @@
+{% load proj_helpers %}
+
+
+{% url 'finish' as href %}
+<li class="nav-item{% link_state_class href %}">
+    <a class="nav-link"
+       href="{{ href }}"
+    >Отделка</a>
+</li>
+
+{% url 'install' as href %}
+<li class="nav-item{% link_state_class href %}">
+    <a class="nav-link"
+       href="{{ href }}"
+    >Монтаж</a>
+</li>
+
+{% url 'project' as href %}
+<li class="nav-item{% link_state_class href %}">
+    <a class="nav-link"
+       href="{{ href }}"
+    >Проектирование</a>
+</li>
+
+{% url 'contact' as href %}
+<li class="nav-item{% link_state_class href %}">
+    <a class="nav-link"
+       href="{{ href }}"
+    >Контакты</a>
+</li>

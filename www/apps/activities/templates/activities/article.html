@@ -1,0 +1,9 @@
+{% extends 'www/layout/article.html' %}
+{% load proj_helpers %}
+
+
+{% block content %}
+    <div class="container readable">
+        {% render_content object.content %}
+    </div>
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% load compress %}
+
+
+{% if yandex_metrika %}
+    {% compress js inline %}
+        <script type="text/coffeescript">
+            ((window, cb) ->
+                (window[cb] ?= []).push ->
+                    try
+                        window.yaCounter{{ yandex_metrika }} = new Ya.Metrika
+                            id: {{ yandex_metrika }}
+                            clickmap: yes
+                            trackLinks: yes
+                            accurateTrackBounce: yes
+                            webvisor: yes
+                            trackHash: yes
+                    catch e
+                ProJ.script '//mc.yandex.ru/metrika/watch.js'
+            ) window, 'yandex_metrika_callbacks'
+        </script>
+    {% endcompress %}
+
+    <noscript>
+        <img class="hide"
+             src="https://mc.yandex.ru/watch/{{ yandex_metrika }}"
+             alt="">
+    </noscript>
+{% endif %}

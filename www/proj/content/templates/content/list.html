@@ -1,0 +1,12 @@
+{% extends 'content/layout.html' %}
+{% load proj_content %}
+
+
+{% block name %}
+    <h1 itemprop="name">PROJ CONTENT</h1>
+{% endblock name %}
+
+
+{% block content %}
+    {% content_tree %}
+{% endblock content %}

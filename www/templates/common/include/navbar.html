@@ -1,0 +1,25 @@
+{% load proj_helpers %}
+
+
+<nav id="navbar"
+     class="navbar navbar-light{% if type %} navbar-{{ type }}{% endif %}"
+>
+    <button class="navbar-toggler hidden-md-up"
+            type="button"
+            data-toggle="collapse"
+            data-target=".navbar .collapse"
+    >
+        <span class="icon icon-bars"
+              aria-hidden="true"
+        ></span>
+    </button>
+
+    {% url 'home' as href %}
+    {% link_sign href 'Группа компаний «ССК»' class='navbar-brand ir' %}
+
+    <div class="collapse navbar-toggleable-sm pull-md-right">
+        <ul class="nav navbar-nav">
+            {% include links %}
+        </ul>
+    </div>
+</nav>

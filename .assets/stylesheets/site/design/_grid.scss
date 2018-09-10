@@ -1,0 +1,46 @@
+
+.grid {
+  background: url("#{$img-path}/crossess.png") 0 0 repeat transparent;
+  border-bottom: 1px solid $gray-lighter;
+
+  .item {
+    position: relative;
+    padding: 0;
+    background: $body-bg;
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      right: 0;
+      bottom: -1px;
+      left: 0;
+      border-right: 1px solid $gray-lighter;
+      border-bottom: 1px solid $gray-lighter;
+    }
+
+    .header {
+      margin: 0;
+      padding: .5rem 1rem;
+      color: $gray-lightest;
+      font-size: .875rem;
+      font-weight: bold;
+      line-height: 1;
+      text-align: right;
+      text-transform: uppercase;
+      background: $gray-light;
+    }
+
+    .inner {
+      position: relative;
+      padding: 2.5rem;
+    }
+
+    &:hover {
+      .header {
+        background: $link-hover-color;
+      }
+    }
+  }
+}

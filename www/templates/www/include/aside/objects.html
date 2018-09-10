@@ -1,0 +1,55 @@
+{% load cck_objects %}
+
+
+<aside
+    id="objects"
+    class="mosaic container-fluid"
+    itemscope
+    itemtype="http://schema.org/DataCatalog"
+>
+    <div class="row">
+        {% if header == 'top' %}
+            <h2
+                class="banner col-md-12"
+                itemprop="name"
+            >
+                <a
+                    class="ribbon poster light"
+                    href="{% url 'objects:list' %}"
+                    itemprop="url"
+                >Все объекты</a>
+            </h2>
+        {% endif  %}
+
+        {% get_object_banner 7  800 300 class='col-md-6' %}
+        {% get_object_banner 8  800 300 class='col-md-6' %}
+        {% get_object_banner 10 534 300 class='col-md-4' %}
+        {% get_object_banner 11 534 300 class='col-md-4' %}
+        {% get_object_banner 22 534 300 class='col-md-4' %}
+
+        {% if header == 'bottom' %}
+            <h2
+                class="banner col-md-12"
+                itemprop="name"
+            >
+                <a
+                    class="ribbon poster light"
+                    href="{% url 'objects:list' %}"
+                    itemprop="url"
+                >Все объекты</a>
+            </h2>
+        {% endif  %}
+    </div>
+
+    {% if not header %}
+        <a
+            itemprop="url"
+            href="{% url 'objects:list' %}"
+        >
+            <meta
+                itemprop="name"
+                content="Все объекты"
+            >
+        </a>
+    {% endif %}
+</aside>

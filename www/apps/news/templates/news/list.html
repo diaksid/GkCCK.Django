@@ -1,0 +1,122 @@
+{% extends 'www/layout/article.html' %}
+{% load compress proj_images %}
+
+
+{% block link %}
+    {{ block.super }}
+
+    {% compress css inline %}
+    <style type="text/scss">
+        #content
+            h3 {
+                margin: 0;
+                line-height: 1.2;
+            }
+
+            .data {
+                margin: 7px 0;
+                font-size: 15px;
+                color: #577;
+            }
+
+            .tags {
+                .btn {
+                    margin: 0 3px 7px 0;
+                    color: #577;
+                }
+            }
+        }
+    </style>
+    {% endcompress %}
+{% endblock link %}
+
+
+{% block content %}
+    {% for object in object_list %}
+        <div
+            class="item clearfix"
+            itemprop="dataset"
+            itemscope
+            itemtype="http://schema.org/Dataset"
+        >
+            <a
+                href="{{ object.get_absolute_url }}"
+                itemprop="url"
+            >
+                {% with size='128' class='img-thumbnail pull-xs-left' %}
+                    {% if object.cover %}
+                        {% thumb object.cover.file %}
+                    {% else %}
+                        {% thumb %}
+                    {% endif %}
+                {% endwith %}
+            </a>
+
+            <h3 itemprop="name">
+                <a
+                    class="player text-upper"
+                    href="{{ object.get_absolute_url }}"
+                    itemprop="url"
+                >{{ object.name|safe }}</a>
+            </h3>
+
+            <meta itemprop="datePublished" content="{{ object.published_date|date:'Y-m-d' }}">
+            <div class="data">{{ object.published_date }}</div>
+
+            {% if object.tags %}
+                {% url 'news:index' as href %}
+                <div class="tags">
+                    {% for tag in object.tags %}
+                        <a
+                            class="btn btn-xs btn-default"
+                            href="{{ href }}?tag={{ tag|urlencode }}"
+                        >{{ tag }}</a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <div itemprop="headline">
+                {{ object.annotation|default:object.content|safe }}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}
+
+
+{% block pagination %}
+    {% if is_paginated %}
+        {% if paginator.num_pages > 1 %}
+            <nav class="pagination">
+                {% if page_obj.has_previous %}
+                    {% if page_obj.previous_page_number == 1 %}
+                        <a href="{{ request.path }}">
+                    {% else %}
+                        <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">
+                    {% endif %}
+                       <span
+                           class="gh gh-step-backward"
+                           aria-hidden="true"
+                       ></span>
+                    </a>
+                {% endif %}
+                {% for idx in paginator.page_range %}
+                    {% if idx == page_obj.number %}
+                        <span>{{ idx }}</span>
+                    {% elif idx == 1 %}
+                        <a href="{{ request.path }}">1</a>
+                    {% else %}
+                        <a href="{{ request.path }}?page={{ idx }}">{{ idx }}</a>
+                    {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">
+                       <span
+                           class="gh gh-step-forward"
+                           aria-hidden="true"
+                       ></span>
+                    </a>
+                {% endif %}
+            </nav>
+        {% endif %}
+    {% endif %}
+{% endblock pagination %}

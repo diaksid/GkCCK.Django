@@ -1,0 +1,81 @@
+// Bootstrap
+@import "bootstrap/variables";
+// Generated icons
+$icon-class-iclude: false;
+@import "site/icons";
+
+// -------------------------
+
+[data-carousel] {
+  padding: 2rem .25rem .5rem .5rem;
+
+  .outer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .inner {
+    width: 9999em;
+    position: relative;
+  }
+
+  .item {
+    float: left;
+    margin-right: .25rem;
+    padding: .25rem;
+    transition: all .4s;
+  }
+
+  .control {
+    position: relative;
+    height: 3rem;
+  }
+
+  .icon {
+    padding: .5rem;
+    color: #ddd;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all .2s;
+
+    &:hover {
+      color: $gray-light;
+    }
+  }
+
+  .prev,
+  .next,
+  .pagination {
+    position: absolute;
+    top: .5rem;
+  }
+
+  .prev {
+    right: 5rem;
+    @include icon-step-backward();
+  }
+
+  .next {
+    right: 0;
+    @include icon-step-forward();
+  }
+
+  .pagination {
+    margin: 0;
+    padding: 0;
+    left: 0;
+    .icon {
+      margin-right: .25rem;
+      font-size: .875rem;
+      @include icon-square-o();
+      &:hover {
+        @include icon-square();
+      }
+      &.is-active {
+        color: #bbb;
+        cursor: default;
+        @include icon-square();
+      }
+    }
+  }
+}

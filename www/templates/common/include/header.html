@@ -1,0 +1,28 @@
+<header id="banner"
+        class="canvas bg-cover clearfix"
+>
+    <a class="phone text-href"
+       href="tel://+7495{% if request.site.id == 1 %}3634582{% else %}6888065{% endif %}"
+    ><small>+7 (495)</small> {% if request.site.id == 1 %}363-45-82{% else %}688-80-65{% endif %}</a>
+
+    {% comment %}
+    <div class="under-construction wow zoomIn"
+         aria-hidden="true"
+         data-wow-delay="1s"
+    ></div>
+    {% endcomment %}
+
+    <h1 itemprop="name">
+        {% if name %}
+            {{ name|safe }}
+        {% elif object.name %}
+            {{ object.name|safe }}
+        {% else %}
+            {{ title|safe }}
+        {% endif %}
+    </h1>
+
+    <div class="preloader"
+         aria-hidden="true"
+    ></div>
+</header>

@@ -1,0 +1,21 @@
+<header id="banner"
+        class="clearfix"
+>
+    <h1 itemprop="name">
+        {% if name %}
+            {{ name|safe }}
+        {% elif object.name %}
+            {{ object.name|safe }}
+        {% else %}
+            {{ title|safe }}
+        {% endif %}
+    </h1>
+
+    <div class="ymap preload"
+         aria-hidden="true"
+         data-name="Группа компаний «ССК»"
+         data-info="Центральный офис"
+         data-center="55.771174 37.605890"
+         data-placemark="55.771174 37.605890"
+    ></div>
+</header>

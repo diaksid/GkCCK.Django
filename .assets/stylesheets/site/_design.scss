@@ -1,0 +1,88 @@
+a.active,
+.active > a {
+  cursor: default;
+}
+
+.js {
+  .onclick,
+  [data-scroll] {
+    cursor: pointer;
+  }
+}
+
+.duplet {
+  small {
+    display: block;
+    margin-top: .25rem;
+    font-size: 50%;
+    line-height: 1.2;
+  }
+}
+
+.shadow {
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, .7);
+
+  a > &,
+  .js &.onclick {
+    transition: box-shadow .2s;
+    &:hover {
+      box-shadow: 3px 3px 12px rgba(0, 0, 0, .9);
+    }
+  }
+}
+
+.gradient-top {
+  @include gradient-y(rgba(0, 0, 0, .25), rgba(0, 0, 0, 0));
+}
+
+.gradient-bottom {
+  @include gradient-y(rgba(0, 0, 0, 0), rgba(0, 0, 0, .25));
+}
+
+.player {
+  @include icon-play();
+  &:before {
+    padding-right: ($spacer / 2);
+    font-family: 'iconfont';
+    font-size: 80%;
+  }
+}
+
+.preload,
+.preloader {
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -9999;
+    left: 50%;
+    top: 50%;
+    width: 64px;
+    height: 64px;
+    margin-left: -32px;
+    margin-top: -32px;
+    background: url("#{$img-path}/loader/sector.128x128.gif") center no-repeat transparent;
+    background-size: cover;
+  }
+
+  &.error {
+    &::after {
+      background-image: url("#{$img-path}/system/error.png");
+    }
+  }
+}
+
+.preloader {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: none repeat scroll 0 0 #fff;
+
+  .js & {
+    display: block;
+  }
+}

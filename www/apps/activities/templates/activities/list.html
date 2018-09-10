@@ -1,0 +1,33 @@
+{% extends 'www/layout/entity.html' %}
+
+
+{% block content %}
+    {% for model in object_list %}
+        <div
+            class="dataset striped"
+            itemprop="dataset"
+            itemscope
+            itemtype="http://schema.org/Dataset"
+        >
+            <div class="container">
+                <h3
+                    class="text-uppercase m-t-0"
+                    itemprop="name"
+                >
+                    <a
+                        class="player"
+                        href="{{ model.get_absolute_url }}"
+                        itemprop="mainEntityOfPage"
+                    >{{ model.name|safe }}</a>
+                </h3>
+                <div itemprop="headline">{{ model.annotation|safe }}</div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}
+
+
+{% block bottom %}
+    {% include 'www/include/aside/permits.html' %}
+    {% include 'www/include/aside/objects.html' %}
+{% endblock bottom %}

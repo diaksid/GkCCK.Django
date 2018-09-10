@@ -1,0 +1,66 @@
+$img-path: '../img';
+
+$navbar-height:       128px;
+$navbar-fixed-height: 64px;
+
+// ---------------
+
+$color-white-dark:    #f7f7f7;
+$color-white-darker:  #f5f5f5;
+$color-white-light:   #fafafa;
+$color-white-lighter: #fcfcfc;
+
+$color-cyan:          #577;
+$color-cyan-deep:     #466;
+$color-cyan-dark:     #355;
+$color-cyan-darker:   #033;
+$color-cyan-light:    #799;
+$color-cyan-lighter:  #acc;
+
+$color-violet:        #957;
+$color-violet-dark:   darken($color-violet, 10%);
+$color-violet-light:  lighten($color-violet, 10%);
+
+$color-active:        #077;
+$color-active-dark:   darken($color-active, 10%);
+$color-active-light:  lighten($color-active, 10%);
+
+$color-accent:        #d00016;
+$color-accent-dark:   darken($color-accent, 10%);
+$color-accent-light:  lighten($color-accent, 10%);
+
+$color-bright:        #2bbac3;
+$color-bright-dark:   darken($color-bright, 10%);
+$color-bright-light:  lighten($color-bright, 10%);
+
+/*!
+ * Bootstrap v4.0.0-alpha.2
+ */
+
+//$enable-flex:              true;
+//$enable-rounded:           false;
+$enable-shadows:           true;
+$enable-gradients:         true;
+$enable-transitions:       true;
+//$enable-hover-media-query: true;
+//$enable-grid-classes:      false;
+$enable-print-styles:      false;
+
+$headings-font-weight:   600;
+$headings-margin-bottom: .875rem;
+
+$link-color:              #428bca;
+$input-color-placeholder: transparentize($color-cyan-light, .5);
+
+// Navbar
+$navbar-light-color:          transparentize(#f7f7f9, .05);
+$navbar-light-hover-color:    $navbar-light-color;
+$navbar-light-active-color:   transparentize(#fff, .05);
+$navbar-light-disabled-color: transparentize(#eceeef, .05);
+
+$dropdown-bg: #fcfcfc;
+
+// Pagination
+$pagination-padding-x:     1rem;
+$pagination-active-bg:     $color-accent;
+$pagination-active-border: $color-accent;

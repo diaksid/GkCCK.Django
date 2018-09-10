@@ -1,0 +1,43 @@
+{% load l10n static proj_helpers %}
+{% get_media_prefix as MEDIA_URL %}
+
+
+{% if src %}
+    <canvas width="{{ width|default:192 }}"
+            height="{{ height|default:192 }}"
+
+            {% if class != False %}
+            class="{{ class|default:'bg-responsive' }}"
+            {% endif %}
+
+            {% if title %}
+            title="{{ title }}"
+            {% endif %}
+
+            aria-hidden="true"
+
+            data-lazy="{{ src }}"
+
+            {% if lightbox and original %}
+                {% if lightbox == True %}
+            data-lightbox
+                {% else %}
+            data-lightbox="{{ lightbox }}"
+            data-lightbox-thumb="{{ orientation }}"
+                {% endif %}
+            data-lightbox-href="{{ MEDIA_URL|urldecode }}{{ original }}"
+            {% endif %}
+    ></canvas>
+
+    {% if itemprop %}
+        {% if original %}
+            <link itemprop="thumbnailUrl"
+                  href="{{ src }}">
+            <link itemprop="image"
+                  href="{{ MEDIA_URL|urldecode }}{{ original }}">
+        {% else %}
+            <link itemprop="image"
+                  href="{{ src }}">
+        {% endif %}
+    {% endif %}
+{% endif %}

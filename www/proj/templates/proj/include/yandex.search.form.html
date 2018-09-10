@@ -1,0 +1,44 @@
+{% if yandex_search %}
+    <form id="yandex_search"
+          action="//yandex.ru/search/site/"
+          method="get"
+          target="_blank"
+          accept-charset="utf-8"
+    >
+        <input type="hidden"
+               name="searchid"
+               value="{{ yandex_search.searchid|default:yandex_search }}">
+
+        <input type="hidden"
+               name="l10n"
+               value="ru">
+
+        <input type="hidden"
+               name="reqenc"
+               value="">
+
+        <input id="yandex-search-input"
+               name="text"
+               type="search"
+               value=""
+                {% if yandex_search.datalist %}
+               list="yandex-search-datalist"
+                {% endif %}
+               placeholder="поиск по сайту"
+               pattern=".{5,}"
+               title="не менее 5 символов"
+               required>
+
+        {% if yandex_search.datalist %}
+            <datalist id="yandex-search-datalist">
+                {% for item in yandex_search.datalist %}
+                    <option value="{{ item }}"></option>
+                {% endfor %}
+            </datalist>
+        {% endif %}
+
+        <button class="icon icon-search href"
+                type="submit"
+        ></button>
+    </form>
+{% endif %}

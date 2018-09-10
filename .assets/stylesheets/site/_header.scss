@@ -1,0 +1,96 @@
+#banner {
+  position: relative;
+  height: 50%;
+  min-height: 480px;
+  padding: 0 1.5rem 0 1rem;
+  color: #fff;
+  line-height: 1;
+
+  @include media-breakpoint-down(lg) {
+    min-height: 400px;
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding-right: 2.5rem;
+    min-height: 320px;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    height: $navbar-height;
+  }
+
+  h1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 3rem;
+    color: #eff;
+    font-size: 4rem;
+    font-weight: bold;
+    line-height: 1;
+    letter-spacing: 2px;
+    transition: all .5s;
+    @include media-breakpoint-down(lg) {
+      padding: 3rem;
+      font-size: 4rem;
+    }
+    @include media-breakpoint-down(sm) {
+      padding: 2rem;
+      font-size: 3rem;
+    }
+    @include media-breakpoint-down(xs) {
+      font-size: 2rem;
+    }
+    small {
+      display: block;
+      font-size: 50%;
+    }
+  }
+
+  .phone {
+    display: block;
+    float: right;
+    color: transparentize(#fff, .1);
+    font-size: 4.5rem;
+    transition: all .2s;
+    font-weight: bold;
+    @include media-breakpoint-down(lg) {
+      font-size: 3.5rem;
+    }
+    @include media-breakpoint-down(sm) {
+      font-size: 2.25rem;
+    }
+    @include media-breakpoint-down(xs) {
+      font-size: 1.875rem;
+    }
+  }
+
+  .more {
+    position: absolute;
+    bottom: 4%;
+    right: 10%;
+    font-size: 1.5rem;
+    text-align: center;
+    .icon {
+      display: block;
+      color: #eff;
+    }
+  }
+
+  .under-construction {
+    position: relative;
+    z-index: -1;
+    @include size(256px, 192px);
+    background: url('#{$img-path}/under-construction.png') 0 0 no-repeat transparent;
+  }
+
+  .preloader {
+    position: absolute;
+    z-index: -1;
+    background-color: $brand-primary;
+  }
+}

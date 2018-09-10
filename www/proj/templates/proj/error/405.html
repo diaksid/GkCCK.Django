@@ -1,0 +1,11 @@
+{% extends 'proj/layout/error.html' %}
+{% load i18n %}
+
+
+{% block title %}405 Method Not Allowed{% endblock title %}
+
+
+{% block content %}
+    <h1>{% trans 'Недопустимый метод' %}</h1>
+    <h2>Error405</h2>
+{% endblock content %}

@@ -1,0 +1,114 @@
+{% extends 'www/layout/entity.html' %}
+{% load compress proj_helpers proj_images cck_activities %}
+
+
+{% block link %}
+    {{ block.super }}
+
+    {% compress css inline %}
+        <style>
+            #content .actual {
+                position: relative;
+                z-index: 1;
+            }
+
+            #content .articles .card-block {
+                padding-top: 1rem;
+                padding-bottom: .25rem;
+            }
+
+            #content .albom > h3 {
+                margin: 0 0 2.5rem;
+                color: #aaa;
+            }
+
+            @media (min-width: 992px) {
+                #content .actual {
+                    float: right;
+                    margin: 0 2rem 0 2.5rem;
+                    padding: 0 0 0 1.5rem;
+                    width: 32%;
+                    border-left: 4px solid #fafafa;
+                }
+
+                #content .actual .item {
+                    float: none;
+                    width: auto;
+                }
+            }
+
+            @media (min-width: 1200px) {
+                #actual {
+                    width: 26%;
+                }
+            }
+        </style>
+    {% endcompress %}
+{% endblock link %}
+
+
+{% block content %}
+    <div class="container readable">
+        {% if object.targets_actual %}
+            <aside class="albom actual text-xs-center m-b-3 aligns"
+                   itemscope
+                   itemtype="http://schema.org/DataCatalog"
+            >
+                <h3>Активные объекты:</h3>
+
+                <div class="conteiner-fluid">
+                    <div class="row">
+                        {% for target in object.targets_actual %}
+                            {% get_activity_object target 'col-sm-6' %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </aside>
+        {% endif %}
+
+
+        {% if object.articles %}
+            <aside class="articles card grid-md-7 grid-lg-6 m-b-3">
+                <nav class="card-block"
+                     itemscope
+                     itemtype="http://schema.org/DataCatalog"
+                >
+                    {% for article in object.articles %}
+                        <h5 itemprop="name">
+                            <a class="player"
+                               href="{{ article.get_absolute_url }}"
+                               itemprop="mainEntityOfPage"
+                            >{{ article.get_label }}</a>
+                        </h5>
+                    {% endfor %}
+                </nav>
+            </aside>
+        {% endif %}
+
+
+        {% render_content object.content %}
+
+
+        {% if object.targets_unactual %}
+            <aside class="albom p-t-3 aligns"
+                   itemscope
+                   itemtype="http://schema.org/DataCatalog"
+            >
+                <h3>Реализованные объекты:</h3>
+
+                <div class="conteiner-fluid text-xs-center">
+                    <div class="row">
+                        {% for target in object.targets_unactual %}
+                            {% get_activity_object target 'col-xs-6 col-sm-4 col-xl-3' %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </aside>
+        {% endif %}
+    </div>
+{% endblock content %}
+
+
+{% block bottom %}
+    {% include 'www/include/aside/permits.html' %}
+{% endblock bottom %}

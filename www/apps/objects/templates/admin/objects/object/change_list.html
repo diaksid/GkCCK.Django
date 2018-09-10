@@ -1,0 +1,25 @@
+{% extends "admin/change_list.html" %}
+
+
+{% block extrahead %}
+    {{ block.super }}
+
+    <style>
+        .column-actual {
+            width: 4.5em;
+        }
+
+        .field-get_name {
+            font-size: 110%;
+        }
+
+        .field-get_name small {
+            display: block;
+            margin-top: .25em;
+        }
+
+        .field-customer {
+            max-width: 16em;
+        }
+    </style>
+{% endblock %}

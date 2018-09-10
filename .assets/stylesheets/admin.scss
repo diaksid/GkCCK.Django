@@ -1,0 +1,116 @@
+@import "site/variables";
+@import "site/mixins";
+// Bootstrap
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+// -------------------------
+
+[class^="field-"] {
+  > a {
+    display: block;
+  }
+}
+
+.column-id,
+.column-index {
+  width: 4.5em;
+}
+
+.column-get_locale {
+  width: 5em;
+}
+
+.column-get_thumb {
+  width: 12em;
+}
+
+.column-active,
+.column-get_publish,
+.column-get_navigate {
+  width: 4.5em;
+}
+
+.field-get_link {
+  max-width: 10em;
+  a {
+    @include text-truncate();
+  }
+}
+
+// -------------------------
+
+#content {
+  .vURLField {
+    width: 30em;
+  }
+
+  .vSmallTextField {
+    width: 25em;
+    @include media-breakpoint-down(lg) {
+      font-size: 15rem;
+    }
+  }
+
+  .vTextField {
+    width: 50em;
+    @include media-breakpoint-down(lg) {
+      font-size: 30rem;
+    }
+  }
+
+  .vLargeTextField,
+  .vXMLLargeTextField {
+    width: 75em;
+    @include media-breakpoint-down(lg) {
+      font-size: 45rem;
+    }
+  }
+
+  .vPositiveSmallIntegerField {
+    width: 5em;
+  }
+
+  .vIntegerField {
+    width: 10em;
+  }
+
+  .vBigIntegerField {
+    width: 15em;
+  }
+
+  .vSmallSelectField {
+    min-width: 21em;
+  }
+
+  .vSelectField {
+    min-width: 41em;
+  }
+
+  .vLageSelectField {
+    min-width: 61em;
+  }
+
+  .autosize {
+    max-height: 16em;
+    &.narrow {
+      max-height: 8em;
+    }
+    &.extra {
+      max-height: 32em;
+    }
+  }
+}
+
+// -------------------------
+
+.img-thumbnail {
+  padding: $thumbnail-padding;
+  line-height: $line-height-base;
+  background-color: $thumbnail-bg;
+  border: $thumbnail-border-width solid $thumbnail-border-color;
+  border-radius: $thumbnail-border-radius;
+  transition: all .2s ease-in-out;
+  @include box-shadow(0 1px 2px rgba(0, 0, 0, .075));
+  @include img-fluid(inline-block);
+}

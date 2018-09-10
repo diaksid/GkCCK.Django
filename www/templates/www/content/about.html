@@ -1,0 +1,104 @@
+{% extends 'www/layout/entity.html' %}
+{% load compress cck_activities %}
+
+
+{% block link %}
+    {{ block.super }}
+
+    {% compress css inline %}
+    <style type="text/scss">
+        #content {
+            h2 {
+                padding: 3rem 0 1rem;
+                color: #577;
+            }
+
+            .list {
+                .card {
+                    margin: 2rem auto 0;
+                    max-width: 512px;
+                    border: .125rem solid #d00016;
+                }
+            }
+
+            .card-title {
+                margin-top: .25rem;
+                color: #d00016;
+            }
+        }
+    </style>
+    {% endcompress %}
+{% endblock link %}
+
+
+{% block content %}
+    <div class="container readable">
+        <p><strong>Группа компаний «ССК»</strong> создана в 2000 году. Она включает в себя динамично развивающиеся компании, работающие в сфере строительства и реализующие амбициозные и уникальные проекты.</p>
+
+        <p>Сегодня <strong>ГК&nbsp;«ССК»</strong> является одним из лидеров в строительной области и осуществляет полный цикл строительства: <b><a href="{% get_activity_url 1 %}">функции технического заказчика</a></b>, <b><a href="{% get_activity_url 2 %}">строительный контроль</a></b>, <a href="{% get_activity_url 4 %}">проектирование</a>, <a href="{% get_activity_url 5 %}">строительно-монтажные работы</a>, а также <a href="{% get_activity_url 3 %}">лабораторные испытания</a> на базе собственной строительной лаборатории.</p>
+
+        <p>Наличие штата квалифицированных специалистов практически всех основных строительных специальностей позволяет работать с объектами разной степени сложности. <b>ГК&nbsp;«ССК»</b> по праву гордится широким портфолио выполненных работ и положительными рекомендациями клиентов &mdash; государственных и частных заказчиков работ и услуг в сфере строительства, среди которых:</p>
+
+        <ul class="list lead text-cyan">
+            <li>ЗАО «ДОНСТРОЙ Инвест»</li>
+            <li>АО «ПСН»</li>
+            <li>АО «МР Групп»</li>
+        </ul>
+
+        <p>Являясь надежным партнером, <b>ГК «ССК»</b> в полном объеме несет гарантийные обязательства по выполненным и сданным работам в период эксплуатации объекта и всегда готова к развитию новых деловых отношений.</p>
+
+        <br>
+
+        <div class="card card-success card-inverse lead text-justify">
+            <div class="card-block">
+                <p class="card-text"><b>Миссия ГК «ССК»</b> &mdash; реализовывать в строительном комплексе России Современные Стандарты Качества мирового уровня.</p>
+                <p class="card-text"><b>Цель ГК «ССК»</b> &mdash; используя четыре основных принципа управления &mdash; планирование, исполнение, лидерство и контроль &mdash; достойно реализовать задачи заказчика.</p>
+            </div>
+        </div>
+
+        <div class="list text-xs-center">
+            <h2>В состав ГК «ССК» входят следующие компании:</h2>
+
+            <div class="card wow zoomIn">
+                <div class="card-block">
+                    <h3 class="card-title">ООО «ССК»</h3>
+                    <p class="card-text">функции технического заказчика</p>
+                </div>
+            </div>
+
+            <div class="card wow zoomIn">
+                <div class="card-block">
+                    <h3 class="card-title">ООО «ССК-проект»</h3>
+                    <p class="card-text">проектирование в строительстве</p>
+                </div>
+            </div>
+
+            <div class="card wow zoomIn">
+                <div class="card-block">
+                    <h3 class="card-title">ООО «СУ 363»</h3>
+                    <p class="card-text">строительно-монтажные работы</p>
+                </div>
+            </div>
+
+            <div class="card wow zoomIn">
+                <div class="card-block">
+                    <h3 class="card-title">НПЦ «СтройТех»</h3>
+                    <p class="card-text">производство заводов ЖБИ</p>
+                </div>
+            </div>
+
+            <div class="card wow zoomIn">
+                <div class="card-block">
+                    <h3 class="card-title">ООО «УМ-77»</h3>
+                    <p class="card-text">механизация строительства, дорожные и земляные работы, вывоз грунта и доставка сыпучих, строительных материалов</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+
+{% block bottom %}
+    {% include 'www/include/aside/permits.html' %}
+    {% include 'www/include/aside/objects.html' %}
+{% endblock bottom %}

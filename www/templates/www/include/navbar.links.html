@@ -1,0 +1,62 @@
+{% load proj_helpers cck_permits cck_activities %}
+
+
+{% url 'about' as href %}
+<li class="nav-item{% link_state_class href %}">
+    <a class="nav-link"
+       href="{{ href }}"
+    >О нас</a>
+</li>
+
+
+{% url 'activities:list' as href %}
+<li class="nav-item dropdown{% link_state_class href %}">
+    <a role="button"
+       class="nav-link dropdown-toggle"
+       href="#"
+       aria-haspopup="true"
+       aria-expanded="false"
+       data-toggle="dropdown"
+    >Деятельность</a>
+
+    <div class="dropdown-menu">
+        {% get_activities 'dropdown-item' %}
+        <div class="dropdown-divider"></div>
+        <a {% link_state href 'dropdown-item emulator' %} href="{{ href }}">
+            <span class="icon icon-bars"
+                  aria-hidden="true"
+            ></span>
+        </a>
+    </div>
+</li>
+
+
+{% url 'permits:list' as href %}
+<li class="nav-item dropdown{% link_state_class href %}">
+    <a role="button"
+       class="nav-link dropdown-toggle"
+       href="#"
+       aria-haspopup="true"
+       aria-expanded="false"
+       data-toggle="dropdown"
+    >Допуски</a>
+
+    <div class="dropdown-menu">
+        {% get_permits 'dropdown-item' %}
+        <div class="dropdown-divider"></div>
+        {% url 'permits:list' as href %}
+        <a {% link_state href 'dropdown-item emulator' %} href="{{ href }}">
+            <span class="icon icon-bars"
+                  aria-hidden="true"
+            ></span>
+        </a>
+    </div>
+</li>
+
+
+{% url 'contact' as href %}
+<li class="nav-item{% link_state_class href %}">
+    <a class="nav-link"
+       href="{{ href }}"
+    >Контакты</a>
+</li>

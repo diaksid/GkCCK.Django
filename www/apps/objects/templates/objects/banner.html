@@ -1,0 +1,38 @@
+{% load static %}
+{% get_media_prefix as MEDIA_URL %}
+
+
+{% if object %}
+    <article class="banner{% if class %} {{ class }}{% endif %}"
+             itemprop="dataset"
+             itemscope
+             itemtype="http://schema.org/Dataset"
+    >
+        <a href="{{ object.get_absolute_url }}"
+           itemprop="mainEntityOfPage"
+        >
+            <canvas class="frame"
+                    width="{{ width }}"
+                    height="{{ height }}"
+                    data-lazy="{{ MEDIA_URL }}{{ cover }}"
+            ></canvas>
+            <link itemprop="image"
+                  href="{{ MEDIA_URL }}{{ cover }}">
+
+            <header class="header">
+                <h3 class="name"
+                    itemprop="name"
+                >{{ object.get_label }}</h3>
+                {% if button %}
+                    <div class="btn btn-secondary-outline">
+                        {{ button }}
+                       <span class="icon icon-right"
+                             aria-hidden="true"
+                       ></span>
+                    </div>
+                {% endif %}
+            </header>
+        </a>
+    </article>
+{% else %}
+{% endif %}

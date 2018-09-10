@@ -1,0 +1,17 @@
+#banner {
+  height: 100%;
+  min-height: 480px;
+
+  h1 {
+    width: 1px;
+    @media (min-width: 1200px) {
+      font-size: 6rem;
+    }
+  }
+
+  .under-construction {
+    @media (max-width: 543px) {
+      top: 3rem;
+    }
+  }
+}

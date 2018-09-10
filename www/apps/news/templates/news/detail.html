@@ -1,0 +1,77 @@
+{% extends 'www/layout/article.html' %}
+{% load i18n compress proj_helpers proj_images %}
+
+
+{% block link %}
+    {{ block.super }}
+
+    {% compress css inline %}
+    <style type="text/scss">
+        #content {
+            aside {
+                float: left;
+                margin: 0 20px 10px 0;
+            }
+
+            .intro {
+                color: #355;
+            }
+        }
+    </style>
+    {% endcompress %}
+{% endblock link %}
+
+
+{% block name %}
+    <h1
+        id="name"
+        class="emphatic"
+        itemprop="name"
+    >
+        {{ object.name|safe }}
+        <small>{{ object.published_date|date:'j F Y' }}</small>
+    </h1>
+{% endblock name %}
+
+
+{% block content %}
+    {% if object.generic %}
+        <aside class='visibly-xs'>
+            {% with size='192' class='img-thumbnail' lightbox='news_detail' %}
+                {% for generic in object.generic %}
+                    {% set_sum object.get_label ' # ' forloop.counter|stringformat:'i' as alt %}
+                    {% thumb generic.image.file alt=alt %}
+                {% endfor %}
+            {% endwith %}
+        </aside>
+    {% endif %}
+
+    {% if object.annotation %}
+        <div
+            class="intro"
+            itemprop="headline"
+        >
+            {{ object.annotation|safe }}
+        </div>
+        <hr>
+        {{ object.content|safe }}
+    {% else %}
+        <div itemprop="headline">
+            {{ object.content|safe }}
+        </div>
+    {% endif %}
+
+    {% if object.source %}
+        <p>
+            <a
+                rel="nofollow"
+                class="player text-sm"
+                href="{{ object.source }}"
+                target="_blank"
+                itemprop="isBasedOnUrl"
+            >{% trans 'источник' %}</a>
+        </p>
+    {% endif %}
+
+    <meta itemprop="datePublished" content="{{ object.published_date|date:'Y-m-d' }}">
+{% endblock content %}

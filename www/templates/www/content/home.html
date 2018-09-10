@@ -1,0 +1,49 @@
+{% extends 'www/layout/entity.html' %}
+{% load compress cck_activities %}
+
+
+{% block link %}
+    {{ block.super }}
+
+    {% compress css inline %}
+        <style type="text/scss">
+            {% include 'www/include/scss/home.scss' %}
+            {% include 'www/include/scss/business.scss' %}
+        </style>
+    {% endcompress %}
+{% endblock link %}
+
+
+{% block header %}
+    {% include 'www/include/header.home.html' %}
+{% endblock header %}
+
+
+{% block top %}
+    {% include 'www/include/business.html' %}
+    {% include 'www/include/aside/activities.html' %}
+{% endblock top %}
+
+
+{% block content %}
+    <div class="container">
+        <p><b>Группа компаний «ССК»</b> объединяет строительные, инжиниринговые и ремонтные компании, которые осуществляют работы по <strong><a href="{% get_activity_url 2 %}">строительному контролю</a></strong>, проектированию, строительству и исполнению <strong><a href="{% get_activity_url 1 %}">функций технического заказчика</a></strong> на крупных жилых и нежилых объектах недвижимости на территории Москвы и Московской области.</p>
+
+        <p><b>Группа компаний «ССК»</b> сегодня &mdash; это более 15 лет успешного опыта, команда квалифицированных сотрудников, портфолио из более 200 объектов, собственный научно-исследовательский центр и неизменно индивидуальный подход к каждому клиенту.</p>
+    </div>
+{% endblock content %}
+
+
+{% block bottom %}
+    {% include 'www/include/aside/permits.html' %}
+    {% include 'www/include/aside/objects.html' with header='top' %}
+{% endblock bottom %}
+
+
+{% block foot %}
+    <div class="preloader"
+         aria-hidden="true"
+    ></div>
+
+    {{ block.super }}
+{% endblock foot %}

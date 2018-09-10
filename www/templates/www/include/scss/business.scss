@@ -1,0 +1,50 @@
+#business {
+  color: #818a91;
+
+  a {
+    color: #818a91;
+    &:hover {
+      color: #0275d8;
+    }
+  }
+
+  .large {
+    display: block;
+    margin: 0 0 .75rem;
+    font-size: 2rem;
+    line-height: 1;
+    @media (max-width: 1199px) {
+      font-size: 1.5rem;
+    }
+    @media (max-width: 991px) {
+      font-size: 1.25rem;
+    }
+  }
+
+  .small {
+    display: block;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1;
+    @media (max-width: 1199px) {
+      font-size: .875rem;
+    }
+    @media (max-width: 767px) {
+      font-size: .5rem;
+    }
+    @media (max-width: 543px) {
+      font-size: .8125rem;
+    }
+  }
+
+  .icon {
+    margin-right: .5rem;
+    font-size: 1.5rem;
+  }
+
+  .phone {
+    @media (max-width: 543px) {
+      margin-top: 1.25rem;
+    }
+  }
+}

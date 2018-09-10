@@ -1,0 +1,65 @@
+{% extends 'common/layout/wrapper.html' %}
+{% load compress %}
+
+
+{% block link %}
+    <link rel="stylesheet"
+          href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    {% compress css %}
+        <link rel="stylesheet"
+              href="{{ STATIC_URL }}css/vendor.css">
+        <link rel="stylesheet"
+              href="{{ STATIC_URL }}css/bootstrap.css">
+        <link rel="stylesheet"
+              href="{{ STATIC_URL }}css/proj.css">
+        <link rel="stylesheet"
+              href="{{ STATIC_URL }}css/app{% if not debug %}.min{% endif %}.css">
+    {% endcompress %}
+{% endblock link %}
+
+
+{% block main %}
+    {% include 'proj/include/pagination.html' %}
+
+    <main id="content"
+          class="clearfix"
+            {% if schema.creative %}
+          itemprop="mainEntity"
+          itemscope
+          itemtype="http://schema.org/{{ schema.creative }}"
+            {% else %}
+          itemprop="mainContentOfPage"
+            {% endif %}
+    >{% block content %}{% endblock content %}</main>
+
+    {% include 'proj/include/pagination.html' %}
+{% endblock main %}
+
+
+{% block bottom %}
+    {#% include 'www/include/aside/partners.html' %#}
+{% endblock bottom %}
+
+
+{% block footer %}
+    {% include 'www/include/footer.html' %}
+{% endblock footer %}
+
+
+{% block navbar %}
+    {% include 'common/include/navbar.html' with links='www/include/navbar.links.html' %}
+{% endblock navbar %}
+
+
+{% block foot %}
+    <script src="{{ STATIC_URL }}js/lib/jquery{% if not debug %}.min{% endif %}.js"></script>
+
+    {% compress js %}
+        <script src="{{ STATIC_URL }}js/vendor{% if not debug %}.min{% endif %}.js"></script>
+        <script src="{{ STATIC_URL }}js/bootstrap{% if not debug %}.min{% endif %}.js"></script>
+        <script src="{{ STATIC_URL }}js/proj{% if not debug %}.min{% endif %}.js"></script>
+        <script src="{{ STATIC_URL }}js/app{% if not debug %}.min{% endif %}.js"></script>
+    {% endcompress %}
+
+    {% include 'proj/include/yandex.metrika.html' %}
+{% endblock foot %}

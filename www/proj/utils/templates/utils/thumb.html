@@ -1,0 +1,11 @@
+{% load thumbnail proj_images %}
+
+{% thumbnail original size crop=crop format=format quality=quality progressive=progressive as img %}
+    {% if lazy == 'canvas' %}
+        {% canvas %}
+    {% else %}
+        {% img original=original %}
+    {% endif %}
+{% empty %}
+    <span class="text-danger">[thumbnail error: {{ original }}]</span>
+{% endthumbnail %}

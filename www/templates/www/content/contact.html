@@ -1,0 +1,182 @@
+{% extends 'www/layout/entity.html' %}
+{% load compress proj_postbox %}
+
+
+{% block link %}
+    {{ block.super }}
+
+    {% compress css inline %}
+        <style>
+            #navbar {
+                height: auto;
+            }
+
+            #banner h1 {
+                display: inline-block;
+                z-index: 1;
+                padding-top: 0;
+                padding-right: 0;
+                width: auto;
+                color: rgba(128, 128, 128, .5);
+            }
+
+            #banner .ymap {
+                position: absolute;
+                z-index: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-color: #0275d8;
+            }
+
+            #content .info a small {
+                display: block;
+                font-size: 70%;
+            }
+
+            #content form {
+                margin: 2rem 0;
+            }
+        </style>
+    {% endcompress %}
+
+    <link rel="stylesheet"
+          href="{{ STATIC_URL }}css/redactor{% if not debug %}.min{% endif %}.css">
+{% endblock link %}
+
+
+{% block header %}
+    {% include 'www/include/header.contact.html' %}
+{% endblock header %}
+
+
+{% block navbar %}
+    {% include 'common/include/navbar.html' with links='www/include/navbar.links.html' type='mini' %}
+{% endblock navbar %}
+
+
+{% block content %}
+    <div class="container">
+        <h2 class="header text-uppercase text-sm-center m-b-2">Контактная информация</h2>
+
+        <div class="info lead text-sm-center m-b-1">
+            <a rel="nofollow"
+               class="block m-b-1"
+               href="//goo.gl/PUAWWN"
+               target="_blank"
+            >127006, г.&nbsp;Москва, ул.&nbsp;Малая&nbsp;Дмитровка, д.&nbsp;18а, стр.&nbsp;3</a>
+            <a rel="nofollow"
+               class="block m-b-1"
+               href="//clck.ru/9wje8"
+               target="_blank"
+            >115409, г.&nbsp;Москва, Каширское&nbsp;шоссе, д.&nbsp;50, корп.&nbsp;2А</a>
+            <a class="block font-weight-bold m-b-1"
+               href="mailto:mail@gkcck.ru"
+            >mail@gkcck.ru</a>
+            <a class="block"
+               href="tel://+74953634582"
+            >+7 (495) 363-45-82
+                <small>(многоканальный)</small>
+            </a>
+        </div>
+
+        <p class="text-sm-center">
+            Вы хотите получать больше информации о Группе компаний «ССК» и её подразделениях?
+            <br>
+            Заполните форму ниже и мы ответим вам в ближайшее время.
+        </p>
+
+        <div class="row">
+            <div class="col-xs-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+                {% postbox_form %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+
+{% block bottom %}
+    <aside class="mosaic container-fluid">
+        <div class="row">
+            <figure class="banner col-md-4"
+                    data-lightbox="contact"
+                    data-lightbox-href="{{ MEDIA_URL }}contact/00.jpg"
+                    data-title="улица Малая Дмитровка"
+            >
+                <canvas class="frame"
+                        width="534"
+                        height="300"
+                        data-lazy="{{ MEDIA_URL }}contact/00.jpg"
+                ></canvas>
+                <link itemprop="image"
+                      href="{{ MEDIA_URL }}contact/00.jpg">
+                <header class="header">
+                    <h3 class="name">улица Малая Дмитровка</h3>
+                </header>
+            </figure>
+
+            <figure class="banner col-md-4"
+                    data-lightbox="contact"
+                    data-lightbox-href="{{ MEDIA_URL }}contact/01.jpg"
+                    data-title="дом 18а"
+            >
+                <canvas class="frame"
+                        width="534"
+                        height="300"
+                        data-lazy="{{ MEDIA_URL }}contact/01.jpg"
+                ></canvas>
+                <link itemprop="image"
+                      href="{{ MEDIA_URL }}contact/01.jpg">
+                <header class="header">
+                    <h3 class="name">дом 18а</h3>
+                </header>
+            </figure>
+
+            <figure class="banner col-md-4"
+                    data-lightbox="contact"
+                    data-lightbox-href="{{ MEDIA_URL }}contact/02.jpg"
+                    data-title="строение 3"
+            >
+                <canvas class="frame"
+                        width="534"
+                        height="300"
+                        data-lazy="{{ MEDIA_URL }}contact/02.jpg"
+                ></canvas>
+                <link itemprop="image"
+                      href="{{ MEDIA_URL }}contact/02.jpg">
+                <header class="header">
+                    <h3 class="name">строение 3</h3>
+                </header>
+            </figure>
+        </div>
+    </aside>
+
+    {% include 'www/include/aside/permits.html' %}
+{% endblock bottom %}
+
+
+{% block foot %}
+    {{ block.super }}
+
+    <script src="{{ STATIC_URL }}js/redactor{% if not debug %}.min{% endif %}.js"></script>
+    {% compress js inline %}
+        <script type="text/coffeescript">
+            $(window).on 'load.tools.redactor', -> $('textarea[data-redactor]').redactor
+                lang: 'ru'
+                minHeight: 160
+                maxHeight: 640
+                formatting: ['p', 'blockquote', 'pre']
+                buttons: [
+                    'formatting'
+                    'bold', 'italic', 'underline', 'deleted'
+                    'alignment'
+                    'outdent', 'indent'
+                    'unorderedlist', 'orderedlist'
+                ],
+                plugins: [
+                    'fullscreen'
+                ]
+        </script>
+    {% endcompress %}
+{% endblock foot %}

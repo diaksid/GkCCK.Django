@@ -1,0 +1,16 @@
+{% load compress %}
+
+
+{% if yandex_search %}
+    {% compress js inline %}
+        <script type="text/coffeescript">
+            ((window, element, className, cb) ->
+                element.classList.add className if not element.classList.contains className
+                (window[cb] ?= []).push ->
+                    alert 'Ya.Site.Form.init'
+                    Ya.Site.Form.init()
+                ProJ.script '//site.yandex.net/v2.0/js/all.js'
+            ) window, document.documentElement, 'ya-page_js_yes', 'yandex_site_callbacks'
+        </script>
+    {% endcompress %}
+{% endif %}

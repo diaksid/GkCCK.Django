@@ -1,0 +1,9 @@
+{% load proj_helpers %}
+
+
+{% for model in models %}
+    <a
+        {% link_state model.get_absolute_url class %}
+        href="{{ model.get_absolute_url }}"
+    >{{ model.get_label }}</a>
+{% endfor %}

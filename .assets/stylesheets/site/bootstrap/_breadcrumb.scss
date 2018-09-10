@@ -1,0 +1,21 @@
+.breadcrumb {
+  @include media-breakpoint-down(lg) {
+    font-size: 1.75rem;
+  }
+
+  a,
+  span {
+    font-size: 1.25rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    + a,
+    + span {
+      &::before {
+        content: "#{$breadcrumb-divider}";
+        padding-right: .5rem;
+        padding-left: .5rem;
+        color: $gray-dark;
+      }
+    }
+  }
+}

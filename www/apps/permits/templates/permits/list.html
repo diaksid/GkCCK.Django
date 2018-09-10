@@ -1,0 +1,63 @@
+{% extends 'www/layout/entity.html' %}
+{% load proj_helpers proj_images %}
+
+
+{% block content %}
+    {% for object in object_list %}
+        <div class="dataset striped"
+             itemprop="dataset"
+             itemscope
+             itemtype="http://schema.org/Dataset"
+        >
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-lg-9">
+                        <h3 class="text-uppercase m-t-0"
+                            itemprop="name"
+                        >
+                            <a class="duplet player"
+                               href="{{ object.get_absolute_url }}"
+                               itemprop="mainEntityOfPage"
+                            >{{ object.name|safe }}</a>
+                        </h3>
+
+                        <div itemprop="headline">
+                            <p>№ {{ object.number }}</p>
+
+                            <p class="small">{{ object.provider }}</p>
+
+                            {% if owner %}
+                                <h4 class="text-accent font-weight-light">{{ object.get_owner_name }}</h4>
+                            {% else %}
+                                <h4>
+                                    <a class="font-weight-light"
+                                       href="{{ object.get_owner_url }}"
+                                       itemprop="isPartOf"
+                                    >{{ object.get_owner_name }}</a>
+                                </h4>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <a class="col-sm-4 col-lg-3 text-xs-right hidden-xs-down"
+                       href="{{ object.get_absolute_url }}"
+                       itemprop="url"
+                    >
+                        {% with size='192' class='img-fluid bg-cover shadow' lazy='canvas' %}
+                            {% if object.cover %}
+                                {% thumb object.cover.file alt=object.cover.get_alt itemprop='thumbnailUrl' %}
+                            {% else %}
+                                {% thumb %}
+                            {% endif %}
+                        {% endwith %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}
+
+
+{% block bottom %}
+    {% include 'www/include/aside/objects.html' with header='top' %}
+{% endblock bottom %}

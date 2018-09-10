@@ -1,0 +1,75 @@
+{% load proj_helpers cck_permits %}
+{% set_list 1 2 3 4 as permits %}
+
+
+<aside
+    class="grid container-fluid aligns"
+    itemscope
+    itemtype="http://schema.org/DataCatalog"
+>
+    <div class="row">
+        {% if header == 'top' %}
+            <h2
+                class="col-md-12 pull-clear"
+                itemprop="name"
+            >
+                <a
+                    class="ribbon poster light"
+                    href="{% url 'permits:list' %}"
+                    itemprop="url"
+                >Все допуски</a>
+            </h2>
+        {% endif %}
+
+        {% for pk in permits %}
+            {% get_permit pk as model %}
+            <article
+                class="item col-md-6 col-xl-3"
+                itemprop="dataset"
+                itemscope
+                itemtype="http://schema.org/Dataset"
+            >
+                <h4 class="header">{{ model.get_owner_name }}</h4>
+
+                <div class="inner">
+                    <h3
+                        class="duplet align"
+                        itemprop="name"
+                    >
+                        <a
+                            href="{{ model.get_absolute_url }}"
+                            itemprop="mainEntityOfPage"
+                        >{{ model.name|safe }}</a>
+                    </h3>
+                    <p class="text-cyan">№ <small>{{ model.number }}</small></p>
+                    <p class="small">{{ model.provider }}</p>
+                </div>
+            </article>
+        {% endfor %}
+
+        {% if header == 'bottom' %}
+            <h2
+                class="col-md-12 pull-clear"
+                itemprop="name"
+            >
+                <a
+                    class="ribbon poster light"
+                    href="{% url 'permits:list' %}"
+                    itemprop="url"
+                >Все допуски</a>
+            </h2>
+        {% endif %}
+    </div>
+
+    {% if not header %}
+        <a
+            itemprop="url"
+            href="{% url 'permits:list' %}"
+        >
+            <meta
+                itemprop="name"
+                content="Все допуски"
+            >
+        </a>
+    {% endif %}
+</aside>

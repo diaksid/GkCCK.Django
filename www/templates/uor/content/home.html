@@ -1,0 +1,314 @@
+{% extends 'uor/layout/entity.html' %}
+{% load compress proj_images %}
+
+
+{% block link %}
+    {{ block.super }}
+
+    {% compress css inline %}
+        <style>
+            #content section {
+                padding: 4rem 0 0;
+            }
+
+            #services h2 {
+                margin: 0 0 2.5rem;
+            }
+
+            #services li {
+                padding: 0 0 1rem;
+                line-height: 1.4;
+            }
+
+            #services canvas {
+                margin: 0 auto 1.5rem;
+            }
+
+            #services h3 {
+                margin: 0;
+                text-transform: none;
+                text-shadow: none;
+            }
+
+            #services .btn {
+                display: block;
+                font-size: 1.25rem;
+                line-height: 1.5;
+                text-align: left;
+                white-space: normal;
+            }
+
+            #services .price {
+                color: #d00016;
+                font-size: 180%;
+                font-weight: 600;
+            }
+        </style>
+    {% endcompress %}
+{% endblock link %}
+
+
+{% block content %}
+    {% with size='192' lazy='canvas' class='img-rounded img-fluid' lightbox='home' %}
+        <div class="container">
+            <p>
+                <strong>Управления Отделочных Работ ГК&nbsp;«ССК»</strong> предлагает Вам сотрудничество в выполнении
+                комплекса работ по <b>проектированию</b>, <b>строительству</b>, <b>ремонту и отделке</b> на новых и
+                реконструируемых объектах в г.&nbsp;Москве иМосковской области.
+            </p>
+        </div>
+
+        <section id="services"
+                 class="screen divided"
+        >
+            <div class="container">
+                {% url 'finish' as href %}
+                <a href="{{ href }}">
+                    <h2 class="player">Отделочные работы</h2>
+                </a>
+
+                <div class="row">
+                    <figure class="col-md-4 hidden-sm-down">
+                        {% thumb 'uor/clipart/18.jpg' %}
+                        {% thumb 'uor/clipart/08.jpg' %}
+                    </figure>
+
+                    <ul class="col-xs-12 col-md-8 col-xl-7 list-unstyled">
+                        <li itemscope
+                            itemtype="http://schema.org/Offer"
+                        >
+                            <h3 itemprop="name">
+                                <a itemprop="mainEntityOfPage"
+                                   class="btn btn-info"
+                                   href="{{ href }}#service-cosmetics"
+                                >Косметический ремонт</a>
+                            </h3>
+                            <p itemprop="price">
+                                Стоимость от <span class="price">1.500</span> до <span class="price">3.000</span>
+                                рублей за м<sup>2</sup>.
+                            </p>
+                        </li>
+
+                        <li itemscope
+                            itemtype="http://schema.org/Offer"
+                        >
+                            <h3 itemprop="name">
+                                <a itemprop="mainEntityOfPage"
+                                   class="btn btn-info"
+                                   href="{{ href }}#service-econom"
+                                >Ремонт эконом класса</a>
+                            </h3>
+                            <p itemprop="price">
+                                Стоимость от <span class="price">3.000</span> до <span class="price">5.000</span>
+                                рублей за м<sup>2</sup>.
+                            </p>
+                        </li>
+
+                        <li itemscope
+                            itemtype="http://schema.org/Offer"
+                        >
+                            <h3 itemprop="name">
+                                <a itemprop="mainEntityOfPage"
+                                   class="btn btn-info"
+                                   href="{{ href }}#service-euro"
+                                >Евроремонт</a>
+                            </h3>
+                            <p itemprop="price">
+                                Стоимость от <span class="price">5.000</span> до <span class="price">10.000</span>
+                                рублей за м<sup>2</sup>.
+                            </p>
+                        </li>
+
+                        <li itemscope
+                            itemtype="http://schema.org/Offer"
+                        >
+                            <h3 itemprop="name">
+                                <a itemprop="mainEntityOfPage"
+                                   class="btn btn-info"
+                                   href="{{ href }}#service-elite"
+                                >Элитный ремонт</a>
+                            </h3>
+                            <p itemprop="price">
+                                Стоимость от <span class="price">10.000</span> рублей за м<sup>2</sup>.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+
+
+                {% url 'install' as href %}
+                <a href="{{ href }}">
+                    <h2 class="player">Монтаж конструкций, систем и сетей</h2>
+                </a>
+
+                <div class="row">
+                    <figure class="col-md-4 hidden-sm-down">
+                        {% thumb 'uor/clipart/21.jpg' %}
+                        {% thumb 'uor/clipart/10.jpg' %}
+                    </figure>
+
+                    <ul class="col-xs-12 col-md-8 col-xl-7 list-unstyled">
+                        <li itemscope
+                            itemtype="http://schema.org/Offer"
+                        >
+                            <h3 itemprop="name">
+                                <a itemprop="mainEntityOfPage"
+                                   class="btn btn-info"
+                                   href="{{ href }}#service-ceiling"
+                                >Натяжные потолки</a>
+                            </h3>
+                            <p itemprop="price">
+                                Стоимость натяжного потолка от <span class="price">700</span>
+                                рублей за м<sup>2</sup>.
+                            </p>
+                        </li>
+
+                        <li itemscope
+                            itemtype="http://schema.org/Offer"
+                        >
+                            <h3 itemprop="name">
+                                <a itemprop="mainEntityOfPage"
+                                   class="btn btn-info"
+                                   href="{{ href }}#service-condition"
+                                >Монтаж систем кондиционирования и вентиляции</a>
+                            </h3>
+                            <p itemprop="price">
+                                Стоимость монтажа от <span class="price">15.000</span> рублей.
+                            </p>
+                        </li>
+
+                        <li itemscope
+                            itemtype="http://schema.org/Offer"
+                        >
+                            <h3 itemprop="name">
+                                <a itemprop="mainEntityOfPage"
+                                   class="btn btn-info"
+                                   href="{{ href }}#service-sewage"
+                                >Монтаж систем водоснабжения и канализации</a>
+                            </h3>
+                            <p itemprop="price">
+                                Стоимость монтажа от <span class="price">8.000</span> рублей.
+                            </p>
+                        </li>
+
+                        <li itemscope
+                            itemtype="http://schema.org/Offer"
+                        >
+                            <h3 itemprop="name">
+                                <a itemprop="mainEntityOfPage"
+                                   class="btn btn-info"
+                                   href="{{ href }}#service-electro"
+                                >Монтаж электрических сетей</a>
+                            </h3>
+                            <p itemprop="price">
+                                Стоимость монтажа от <span class="price">1.000</span> рублей.
+                            </p>
+                        </li>
+
+                        <li itemscope
+                            itemtype="http://schema.org/Offer"
+                        >
+                            <h3 itemprop="name">
+                                <a itemprop="mainEntityOfPage"
+                                   class="btn btn-info"
+                                   href="{{ href }}#service-home"
+                                >«Умный дом»</a>
+                            </h3>
+                            <p itemprop="price">
+                                Стоимость системы от <span class="price">70.000</span> рублей.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+
+
+                {% url 'project' as href %}
+                <a href="{{ href }}">
+                    <h2 class="player">Дизайн и проектирование</h2>
+                </a>
+
+                <div class="row">
+                    <figure class="col-md-4 hidden-sm-down">
+                        {% thumb 'uor/clipart/15.jpg' %}
+                        {% thumb 'uor/clipart/16.jpg' %}
+                        {% thumb 'uor/clipart/07.jpg' %}
+                        {% thumb 'uor/clipart/17.jpg' %}
+                        {% thumb 'uor/clipart/23.jpg' %}
+                    </figure>
+
+                    <ul class="col-xs-12 col-md-8 col-xl-7 list-unstyled">
+                        <li>
+                            <a class="btn btn-secondary disabled"
+                               href="#"
+                            >Разработка архитектурно-планировочного решения</a>
+                            <p><span class="price">&nbsp;</span></p>
+                        </li>
+
+                        <li>
+                            <a class="btn btn-secondary disabled"
+                               href="#"
+                            >Дизайн-проект</a>
+                            <p><span class="price">&nbsp;</span></p>
+                        </li>
+
+                        <li>
+                            <a class="btn btn-secondary disabled"
+                               href="#"
+                            >Подбор элементов интерьера</a>
+                            <p><span class="price">&nbsp;</span></p>
+                        </li>
+
+                        <li>
+                            <a class="btn btn-secondary disabled"
+                               href="#"
+                            >Компьютерная 3D графика</a>
+                            <p><span class="price">&nbsp;</span></p>
+                        </li>
+
+                        <li>
+                            <a class="btn btn-secondary disabled"
+                               href="#"
+                            >Авторский надзор</a>
+                            <p><span class="price">&nbsp;</span></p>
+                        </li>
+
+                        <li>
+                            <a class="btn btn-secondary disabled"
+                               href="#"
+                            >Согласование перепланировки</a>
+                            <p><span class="price">&nbsp;</span></p>
+                        </li>
+
+                        <li>
+                            <a class="btn btn-secondary disabled"
+                               href="#"
+                            >Проект электроснабжения</a>
+                            <p><span class="price">&nbsp;</span></p>
+                        </li>
+
+                        <li>
+                            <a class="btn btn-secondary disabled"
+                               href="#"
+                            >Проект водоснабжения и канализации</a>
+                            <p><span class="price">&nbsp;</span></p>
+                        </li>
+
+                        <li>
+                            <a class="btn btn-secondary disabled"
+                               href="#"
+                            >Проект кондиционирования и вентиляции</a>
+                            <p><span class="price">&nbsp;</span></p>
+                        </li>
+
+                        <li>
+                            <a class="btn btn-secondary disabled"
+                               href="#"
+                            >Согласование в Мосэнергонадзоре</a>
+                            <p><span class="price">&nbsp;</span></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    {% endwith %}
+{% endblock content %}

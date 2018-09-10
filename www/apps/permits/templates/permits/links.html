@@ -1,0 +1,10 @@
+{% load proj_helpers %}
+
+
+{% for item in items %}
+    {% url 'permits:list' item.owner as href %}
+    <a
+        {% link_state href class %}
+        href="{{ href }}"
+    >{{ item.label }}</a>
+{% endfor %}

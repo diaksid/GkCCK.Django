@@ -1,0 +1,62 @@
+{% load l10n static proj_helpers %}
+{% get_media_prefix as MEDIA_URL %}
+
+
+{% if src %}
+    <img width="{{ width|default:192 }}"
+         height="{{ height|default:192 }}"
+
+            {% if class != False %}
+         class="{{ class }}"
+            {% endif %}
+
+            {% if title %}
+         title="{{ title }}"
+            {% endif %}
+
+         alt="{{ alt|default:title|lower }}"
+
+            {% if lazy %}
+         src="{{ MEDIA_URL|urldecode }}{{ lazy }}"
+         data-lazy="{{ src }}"
+            {% else %}
+         src="{{ src }}"
+            {% endif %}
+
+            {% if lightbox %}
+                {% if lightbox == True %}
+         data-lightbox
+                {% else %}
+         data-lightbox="{{ lightbox }}"
+         data-lightbox-thumb="{{ orientation }}"
+                {% endif %}
+                {% if original %}
+         data-lightbox-href="{{ MEDIA_URL|urldecode }}{{ original }}"
+                {% endif %}
+            {% endif %}
+
+            {% if delay %}
+         data-wow-delay="{{ delay|unlocalize }}s"
+            {% endif %}
+
+            {% if itemprop and not lazy %}
+                {% if lightbox and original %}
+         itemprop="thumbnailUrl"
+                {% else %}
+         itemprop="image"
+                {% endif %}
+            {% endif %}
+    >
+
+    {% if itemprop and lazy %}
+        {% if original %}
+            <link itemprop="thumbnailUrl"
+                  href="{{ src }}">
+            <link itemprop="image"
+                  href="{{ MEDIA_URL|urldecode }}{{ original }}">
+        {% else %}
+            <link itemprop="image"
+                  href="{{ src }}">
+        {% endif %}
+    {% endif %}
+{% endif %}

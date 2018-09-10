@@ -1,0 +1,27 @@
+{% load proj_helpers mptt_tags %}
+
+
+<nav>
+   {% if node and self %}
+        <a href="{{ node.get_absolute_url }}">{{ node.name }}</a>
+        {{ node.annotation|safe }}
+   {% endif %}
+
+   {% if nodes %}
+        <ol>
+            {% recursetree nodes %}
+                {% with href=node.get_absolute_url %}
+                    <li{% link_state href %}>
+                        <a href="{{ href }}">{{ node.name }}</a>
+                        {{ node.annotation|safe }}
+                        {% if not node.is_leaf_node %}
+                            <ul class="children">
+                                {{ children }}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endwith %}
+            {% endrecursetree %}
+        </ol>
+   {% endif %}
+</nav>

@@ -1,0 +1,148 @@
+{% load proj_helpers %}
+
+
+<footer id="footer"
+        class="text-href"
+>
+    <div class="ribbon dark poster onclick"
+         data-scroll="#"
+    >
+        В начало
+    </div>
+
+
+    <div class="content text-href">
+        <div class="container">
+            <div class="row">
+                <div class="info col-xs-12 col-md-4">
+                    <h3>Информация</h3>
+                    <nav class="nav">
+                        {% url 'contact' as href %}
+                        <a {% link_state href %}
+                                href="{{ href }}"
+                        >Контакты</a>
+                    </nav>
+                    {% include 'common/include/social.html' %}
+                </div>
+
+                <div class="activities col-xs-12 col-md-4">
+                    <h3>Услуги</h3>
+                    <nav class="nav">
+                        {% url 'finish' as href %}
+                        <a {% link_state href %}
+                                href="{{ href }}"
+                        >Отделка помещений</a>
+                        {% url 'install' as href %}
+                        <a {% link_state href %}
+                                href="{{ href }}"
+                        >Монтаж конструкций, систем и сетей</a>
+                        {% url 'project' as href %}
+                        <a {% link_state href %}
+                                href="{{ href }}"
+                        >Дизайн и проектирование</a>
+                    </nav>
+                </div>
+
+                <div class="business col-xs-12 col-md-4"
+                     itemscope
+                     itemtype="http://schema.org/LocalBusiness"
+                >
+                    <h3 itemprop="name">
+                        <a href="//gkcck.ru"
+                           target="_blank"
+                           itemprop="url"
+                        >Группа компаний «ССК»</a>
+                    </h3>
+                    <div class="contact nav">
+                        <a rel="nofollow"
+                           href="//goo.gl/PUAWWN"
+                           target="_blank"
+                           itemprop="address"
+                           itemscope
+                           itemtype="http://schema.org/PostalAddress"
+                        >
+                            <span itemprop="postalCode">127006</span>,
+                            <span itemprop="addressRegion addressLocality">Москва</span>,
+                            <span itemprop="streetAddress">ул.&nbsp;Малая Дмитровка, д.&nbsp;18а, стр.&nbsp;3</span>
+                        </a>
+                        <a class="font-weight-bold"
+                           href="mailto:mail@gkcck.ru"
+                           itemprop="email"
+                        >
+                            <span class="icon icon-envelope-o"
+                                  aria-hidden="true"
+                            ></span>
+                            mail@gkcck.ru
+                        </a>
+                        <a class="duplet"
+                           href="tel://+74956888065"
+                           itemprop="telephone"
+                        >
+                            <span class="icon icon-phone"
+                                  aria-hidden="true"
+                            ></span>
+                            +7 (495) 688-80-65
+                        </a>
+                    </div>
+                    <div>
+                        <span class="icon icon-clock-o"
+                              aria-hidden="true"
+                        ></span>
+                        c&nbsp;9<sup>00</sup> до&nbsp;19<sup>00</sup>
+                        <meta itemprop="openingHours"
+                              content="Mo-Fr 9:00−19:00">
+                    </div>
+                    <span itemprop="geo"
+                          itemscope
+                          itemtype="http://schema.org/GeoCoordinates"
+                    >
+                        <meta itemprop="latitude"
+                              content="55.771174"
+                        >
+                        <meta itemprop="longitude"
+                              content="37.605890"
+                        >
+                    </span>
+
+                    {% include 'proj/include/yandex.search.form.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="copyright clearfix">
+        <div class="pull-xs-right">
+            {% url 'privacy' as href %}
+            <a {% link_state href %}
+               href="{{ href }}"
+            >Политика конфиденциальности</a>
+            <span itemprop="copyrightHolder"
+                  class="m-l-3">
+                <a {# rel="nofollow" #}
+                   href="//fref.ru{# google.com/+CckgroupRuWeb #}?rel=author"
+                   target="_blank"
+                   itemprop="author"
+                >FREF{# ГК «ССК» #}</a>
+            </span>
+            &copy;
+            <span itemprop="copyrightYear">2016</span>
+        </div>
+
+        <span class="icon icon-html5 onclick"
+              aria-hidden="true"
+              data-w3c
+        ></span>
+        {% if yandex_metrika %}
+            <span class="icon icon-yandex-metrika onclick"
+                  aria-hidden="true"
+                  data-ymet="{{ yandex_metrika }}"
+            ></span>
+        {% endif %}
+        <a rel="nofollow"
+           class="engine"
+           href="//www.djangoproject.com/"
+           target="_blank"
+        >django</a>
+    </div>
+</footer>

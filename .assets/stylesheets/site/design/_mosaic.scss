@@ -1,0 +1,97 @@
+$mosaic-width: 800px !default;
+$mosaic-height: 600px !default;
+
+.mosaic {
+  .frame {
+    display: block;
+    width: 100%;
+    height: auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: cover;
+    will-change: transform;
+  }
+
+  .header {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 3rem 3rem 4rem;
+    color: #fff;
+    @include gradient-y(rgba(61, 105, 231, 0), rgba(4, 12, 33, .8));
+    @include media-breakpoint-down(md) {
+      padding: 2.5rem 2.5rem 3rem;
+    }
+    @include media-breakpoint-down(xs) {
+      padding: 2rem 2rem 2.5rem;
+    }
+  }
+
+  .name {
+    margin: 4em 0 0;
+    font-size: 2rem;
+    @include media-breakpoint-down(lg) {
+      font-size: 1.5rem;
+    }
+    @include media-breakpoint-down(md) {
+      font-size: 1rem;
+    }
+    @include media-breakpoint-down(sm) {
+      font-size: 2rem;
+    }
+    @include media-breakpoint-down(xs) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .btn {
+    margin: 2rem 0 0;
+    font-size: 1.25rem;
+    border-radius: 0;
+    will-change: color, background-color;
+    .icon {
+      margin-left: .5rem;
+      transition: all .4s;
+      will-change: margin-left;
+    }
+    &:hover {
+      .icon {
+        margin-left: 1.5rem;
+      }
+    }
+  }
+
+  .frame,
+  .btn {
+    transition: all .4s;
+  }
+
+  .banner {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: $gray;
+    &.frame-top {
+      .frame {
+        background-position: center 0;
+      }
+    }
+    &.frame-bottom {
+      .frame {
+        background-position: center 100%;
+      }
+    }
+    &:hover {
+      .frame {
+        transform: scale(1.1);
+      }
+      .btn {
+        color: $link-hover-color;
+        background-color: #eee;
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+<header id="banner"
+        class="bg-cover clearfix"
+>
+    <a class="phone text-href"
+       href="tel://+74953634582"
+    ><small>+7 (495)</small> 363-45-82</a>
+
+    {% comment %}
+    <div class="under-construction wow zoomIn"
+         aria-hidden="true"
+         data-wow-delay="1s"
+    ></div>
+    {% endcomment %}
+
+    <h1 itemprop="name">
+        {% if name %}
+            {{ name|safe }}
+        {% elif object.name %}
+            {{ object.name|safe }}
+        {% else %}
+            {{ title|safe }}
+        {% endif %}
+    </h1>
+
+    <div class="more wow zoomIn"
+         data-wow-delay=".5s"
+    >
+        <small class="icon icon-chevron-down wow fadeOutDown infinite"
+               aria-hidden="true"
+               data-wow-delay="1.5s"
+        ></small>
+        <small class="icon icon-chevron-down wow fadeOutDown infinite"
+               aria-hidden="true"
+               data-wow-delay="1.75s"
+        ></small>
+        <small class="icon icon-chevron-down wow fadeOutDown infinite"
+               aria-hidden="true"
+               data-wow-delay="2s"
+        ></small>
+    </div>
+</header>

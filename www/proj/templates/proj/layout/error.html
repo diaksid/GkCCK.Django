@@ -1,0 +1,44 @@
+{% spaceless %}
+{% load i18n static %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!doctype html>
+
+
+<html lang="{{ LANGUAGE_CODE }}">
+
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Error{% endblock title %}</title>
+
+    <meta name="robots" content="noindex,nofollow,noarchive">
+
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="stylesheet" href="{% get_static_prefix %}css/error{% if not debug %}.min{% endif %}.css">
+
+    <link type="image/vnd.microsoft.icon" href="/favicon.ico" rel="shortcut icon">
+    <link type="image/png" href="/favicon.png" rel="shortcut icon">
+<head>
+
+
+<body>
+    <div id="wrapper">
+        <div class="content">{% block content %}{% endblock content %}</div>
+
+        <script>if (history.length > 1){document.write('<a href="javascript:history.back()"><<</a> ');}</script>
+
+        <a href="/">{% trans 'на главную' %}</a>
+
+        {% if request and user.is_authenticated and user.is_staff %}
+            <script>document.write('<a href="{% url 'admin:index' %}">{% trans 'управление' %}</a> ');</script>
+        {% endif %}
+    </div>
+</body>
+
+</html>
+{% endspaceless %}

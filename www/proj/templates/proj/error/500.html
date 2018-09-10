@@ -1,0 +1,11 @@
+{% extends 'proj/layout/error.html' %}
+{% load i18n %}
+
+
+{% block title %}500 Internal Server Error{% endblock title %}
+
+
+{% block content %}
+    <h1>{% trans 'Внутренняя ошибка сервера' %}</h1>
+    <h2>Error500</h2>
+{% endblock content %}

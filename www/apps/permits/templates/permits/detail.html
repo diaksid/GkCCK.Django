@@ -1,0 +1,70 @@
+{% extends 'www/layout/entity.html' %}
+{% load proj_helpers proj_images %}
+
+
+{% block content %}
+    <div class="container">
+        <header>
+            <h1 class="header"
+                itemprop="name"
+            >{{ object.name|safe }}</h1>
+        </header>
+
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <h4 class="text-cyan m-t-0 m-b-2">№
+                    <small>{{ object.number }}</small>
+                </h4>
+
+                <h6 class="m-b-2">{{ object.provider }}</h6>
+
+                <h3 class="m-b-2">
+                    <a class="player font-weight-light"
+                       href="{{ object.get_owner_url }}"
+                       itemprop="isPartOf"
+                    >{{ object.get_owner_name }}</a>
+                </h3>
+
+
+                <dl class="row">
+                    <dt class="col-xs-12 col-sm-5">дата выдачи:</dt>
+                    <dd class="col-xs-12 col-sm-7">{{ object.issue_date }}</dd>
+
+                    <dt class="col-xs-12 col-sm-5">начало действия с:</dt>
+                    <dd class="col-xs-12 col-sm-7">{{ object.onset_date|default:object.issue_date }}</dd>
+
+                    <dt class="col-xs-12 col-sm-5">срок действия до:</dt>
+                    <dd class="col-xs-12 col-sm-7">{{ object.end_date|default:'бессрочно' }}</dd>
+                </dl>
+            </div>
+
+
+            {% with size='x192' class='img-fluid bg-cover shadow onclick' lightbox='permit' %}
+                {% with lazy='canvas' width=144 height=192 %}
+                    <div class="col-xs-12 col-md-6">
+                        {% for generic in object.generic %}
+                            {% if generic.albom %}
+                                <div class="albom row text-md-right">
+                                    {% for through in generic.albom.through %}
+                                        <figure class="item col-xs-6 col-sm-4 col-md-6 col-xl-4 wow fadeIn"
+                                                data-wow-delay="{{ forloop.counter|multiply:.2 }}s"
+                                        >{% thumb through.file title=through.get_title alt=through.get_alt %}</figure>
+                                    {% empty %}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                            {% endif %}
+                        {% empty %}
+                        {% endfor %}
+                    </div>
+                {% endwith %}
+            {% endwith %}
+        </div>
+    </div>
+{% endblock content %}
+
+
+{% block bottom %}
+    {% include 'www/include/aside/objects.html' with header='top' %}
+{% endblock bottom %}

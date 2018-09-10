@@ -1,0 +1,9 @@
+{
+  "presets": [
+    "latest",
+    "react",
+    "stage-0"
+  ],
+  "only": "gulpfile.babel.js",
+  "retainLines": true
+}

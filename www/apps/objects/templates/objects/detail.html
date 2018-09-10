@@ -1,0 +1,97 @@
+{% extends 'www/layout/entity.html' %}
+{% load l10n proj_helpers proj_images cck_activities %}
+
+
+{% block content %}
+    <div class="container">
+        <h2 class="header">{{ object.address|safe }}</h2>
+
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6 overflow">
+                <dl class="row m-b-2">
+                    <dt class="col-xs-12 col-sm-5">заказчик:</dt>
+                    <dd class="col-xs-12 col-sm-7">{{ object.customer }}</dd>
+
+                    <dt class="col-xs-12 col-sm-5">застройщик:</dt>
+                    <dd class="col-xs-12 col-sm-7">{{ object.developer|default:'--' }}</dd>
+
+                    <dt class="col-xs-12 col-sm-5">начало работ:</dt>
+                    <dd class="col-xs-12 col-sm-7">{{ object.start_date|default:'--' }}</dd>
+
+                    <dt class="col-xs-12 col-sm-5">окончание работ:</dt>
+                    <dd class="col-xs-12 col-sm-7">{{ object.start_date|default:'--' }}</dd>
+                </dl>
+
+
+                {% if object.note %}
+                    <div class="m-b-2 clearfix">{{ object.note|safe }}</div>
+                {% endif %}
+
+
+                {% if object.activities %}
+                    <aside class="m-b-3"
+                           itemscope
+                           itemtype="http://schema.org/DataCatalog"
+                    >
+                        {% for activity in object.activities %}
+                            <div itemprop="dataset"
+                                 itemscope
+                                 itemtype="http://schema.org/Dataset"
+                            >
+                                <h3 class="text-uppercase font-weight-light"
+                                    itemprop="name"
+                                >
+                                    <a class="player"
+                                       href="{{ activity.get_absolute_url }}"
+                                       itemprop="mainEntityOfPage"
+                                    >{{ activity.get_label }}</a>
+                                </h3>
+                            </div>
+                        {% empty %}
+                        {% endfor %}
+                    </aside>
+                {% endif %}
+            </div>
+
+
+            {% if object.longitude and object.latitude %}
+                <div class="col-xs-12 col-lg-6">
+                    <div id="ymap"
+                         class="ymap card"
+                         aria-hidden="true"
+                         data-name="{{ object.get_label }}"
+                         data-info="{{ object.address }}"
+                            {% localize off %}
+                         data-center="{{ object.longitude }} {{ object.latitude }}"
+                         data-placemark="{{ object.longitude }} {{ object.latitude }}"
+                            {% endlocalize %}
+                         data-zoom="{{ object.zoom|default:14 }}"
+                    ></div>
+                </div>
+            {% endif %}
+        </div>
+
+
+        {% with size='x192' class='img-fluid bg-cover shadow onclick' lightbox='object' %}
+            {% with lazy='canvas' width=256 height=192 %}
+                {% for generic in object.generic %}
+                    <div class="albom row text-xs-center">
+                        {% for through in generic.albom.through %}
+                            <figure class="item col-md-6 col-lg-4 col-xl-3 wow fadeIn"
+                                    data-wow-delay="{{ forloop.counter|multiply:.2 }}s"
+                            >{% thumb through.file title=through.get_title alt=through.get_alt %}</figure>
+                        {% empty %}
+                        {% endfor %}
+                    </div>
+                {% empty %}
+                {% endfor %}
+            {% endwith %}
+        {% endwith %}
+    </div>
+{% endblock content %}
+
+
+{% block bottom %}
+    {% include 'www/include/aside/permits.html' %}
+{% endblock bottom %}

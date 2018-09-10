@@ -1,0 +1,108 @@
+#footer {
+  position: relative;
+  z-index: $zindex-navbar;
+  color: #999;
+  background: #222;
+
+  a {
+    color: #ddd;
+  }
+
+  .content {
+    padding: 0 0 1rem;
+    font-size: .8125rem;
+    line-height: 1.5rem;
+    border-bottom: 1px solid #444;
+
+    [class^="col-"] {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    h3 {
+      margin: 2rem 0 1rem;
+      color: #888;
+      font-size: .875rem;
+      font-weight: bold;
+    }
+    .nav {
+      margin-bottom: 2.75rem;
+      a {
+        display: block;
+        padding: .5rem 0;
+      }
+    }
+    .business {
+      .icon {
+        margin-right: .5rem;
+      }
+    }
+    .contact {
+      margin-bottom: .5rem;
+      a {
+        font-size: .875rem;
+      }
+    }
+    .social {
+      font-size: 1.25rem;
+    }
+  }
+
+  .copyright {
+    padding: 0 2rem;
+    color: #555;
+    font-size: .8125rem;
+    line-height: 3rem;
+    a {
+      color: #777;
+    }
+    .icon {
+      margin-right: 1rem;
+      font-size: 1.25rem;
+    }
+    .onclick {
+      display: none;
+      @at-root .js & {
+        display: inline-block;
+        transition: all .4s;
+        &:hover,
+        &:focus {
+          color: $link-hover-color;
+          transform: scale(1.1);
+        }
+      }
+    }
+    .engine {
+      color: #055;
+      font-size: .8125rem;
+      font-weight: 600;
+    }
+  }
+}
+
+// Yandex Search
+
+#yandex_search {
+  display: block;
+  margin: 2.75rem 0 .5rem;
+  line-height: 1rem;
+
+  button,
+  input {
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
+
+  button {
+    padding: 8px;
+    font-size: .875rem;
+  }
+
+  input {
+    padding: 5px 0;
+    border-bottom: 1px solid $gray-light;
+    &::placeholder {
+      color: $input-color-placeholder;
+    }
+  }
+}

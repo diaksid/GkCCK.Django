@@ -1,0 +1,107 @@
+.font-monospace {
+  font-family: $font-family-monospace;
+}
+
+.font-digit {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.font-weight-light {
+  font-weight: 300;
+}
+
+.font-size-base {
+  font-size: $font-size-base;
+}
+
+.font-size-lg {
+  font-size: $font-size-lg;
+}
+
+.font-size-sm {
+  font-size: $font-size-sm;
+}
+
+// ---------------
+
+.text-white {
+  color: #fafafa;
+}
+
+.text-accent {
+  color: $color-accent;
+}
+
+.text-active {
+  color: $color-active;
+}
+
+.text-cyan {
+  color: $color-cyan;
+}
+
+// ---------------
+
+a,
+input,
+button,
+.onclick,
+.btn {
+  outline: 0 !important;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  &.text-href,
+  .text-href & {
+    &.parent,
+    .parent & {
+      color: transparentize($color-active-light, .1) !important;
+    }
+    &:hover {
+      color: transparentize($link-color, .1) !important;
+    }
+    &.active,
+    .active & {
+      color: transparentize($color-accent-light, .1) !important;
+    }
+  }
+}
+
+abbr[title] {
+  text-decoration: none;
+}
+
+ol,
+ul {
+  &.push {
+    > li {
+      margin-bottom: .5rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+dl {
+  &.push {
+    > dt,
+    > dd {
+      margin-bottom: .5rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+table {
+  th,
+  td {
+    position: static !important;
+    float: none !important;
+  }
+}

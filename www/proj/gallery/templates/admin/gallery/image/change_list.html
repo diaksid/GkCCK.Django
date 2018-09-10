@@ -1,0 +1,26 @@
+{% extends "admin/change_list.html" %}
+
+
+{% block extrahead %}
+    {{ block.super }}
+
+    <style><!--
+        .field-type {
+            max-width: 12em;
+        }
+
+        .field-name {
+            font-size: 110%;
+        }
+
+
+        .field-title,
+        .field-get_description {
+            max-width: 20em;
+        }
+
+        .field-alt {
+            max-width: 16em;
+        }
+    --></style>
+{% endblock %}
