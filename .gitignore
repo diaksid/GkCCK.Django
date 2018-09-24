@@ -128,6 +128,7 @@ nginx.inc
 /*.code-workspace
 /.vscode
 /.master
+/.dumps
 /web/assets/*
 
 !.gitkeep

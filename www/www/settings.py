@@ -14,8 +14,9 @@ INTERNAL_IPS = (
 )
 
 ALLOWED_HOSTS = (
+    'localhost',
     '127.0.0.1',
-    'gkcck.ru',
+    'dev.gkcck.ru',
     'uor.gkcck.ru',
 )
 
@@ -27,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'django.contrib.sites',
     'django.contrib.sitemaps',
 
@@ -55,7 +57,7 @@ INSTALLED_APPS = [
     'apps.objects',
 ]
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'proj.middleware.MultiHostMiddleware',
 
     'django.middleware.gzip.GZipMiddleware',
@@ -64,14 +66,12 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.locale.LocaleMiddleware',
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
-
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 
     # 'django.contrib.admindocs.middleware.XViewMiddleware',
 
@@ -144,9 +144,9 @@ WSGI_APPLICATION = 'www.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'gkcck',
-        'USER': 'vps',
-        'PASSWORD': 'Vps1234567',
+        'NAME': 'gkcck--django',
+        'USER': 'dev',
+        'PASSWORD': 'Dev1234567',
         'HOST': 'localhost',
         'PORT': '5432',
         'ATOMIC_REQUESTS': True,

@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="IHOR CCK vps" createEmptyFolders="true" exclude=".svn;.cvs;.idea;.DS_Store;.git*;.hg;*.md;__pycache__;node_modules">
+  <component name="PublishConfigData" serverName="IHOR CCK dev" createEmptyFolders="true" exclude=".svn;.cvs;.idea;.DS_Store;.git*;.hg;*.md;__pycache__;node_modules;.master">
     <serverData>
-      <paths name="IHOR CCK dev">
+      <paths name="IHOR CCK">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="IHOR CCK dev">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/gkcck" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
@@ -19,11 +26,11 @@
       <paths name="IHOR CCK vps">
         <serverdata>
           <mappings>
-            <mapping deploy="/gkcck" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
-      <paths name="IHOR SSK">
+      <paths name="IHOR PRO">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />

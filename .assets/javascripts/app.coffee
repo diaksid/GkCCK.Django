@@ -34,8 +34,8 @@
 
   host = location.hostname
   path = location.pathname
-  home = path is '/' and host is 'gkcck.ru'
-  page = (path isnt '/' or host isnt 'gkcck.ru') and path isnt '/contact'
+  home = path is '/' and host is 'dev.gkcck.ru'
+  page = (path isnt '/' or host isnt 'dev.gkcck.ru') and path isnt '/contact'
   size = switch
     when screen.width > 1600 then 'xl'
     when screen.width > 1200 then 'lg'
