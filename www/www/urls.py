@@ -5,7 +5,7 @@ from django.contrib import admin
 # from filebrowser.sites import site as filebrowsersite
 
 from . import views
-from .sitemaps import sitemaps
+# from .sitemaps import sitemaps
 
 admin.AdminSite.site_title = 'GkCCK админ'
 admin.AdminSite.site_header = 'GkCCK администрирование'
@@ -44,15 +44,15 @@ urlpatterns = [
     #     include('proj.callback.urls', namespace='callback')),
 
     url(r'^robots\.txt$', views.RobotsView.as_view()),
-    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps()},
-        name='django.contrib.sitemaps.views.sitemap'),
+    # url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps()},
+    #     name='django.contrib.sitemaps.views.sitemap'),
 
     # url(r'^admin/doc/',
     #     include('django.contrib.admindocs.urls')),
     # url(r'^admin/filebrowser/',
     #     include(filebrowsersite.urls)),
-    url(r'^grappelli/',
-        include('grappelli.urls')),
+    # url(r'^grappelli/',
+    #     include('grappelli.urls')),
     url(r'^admin/', admin.site.urls),
 ]
 

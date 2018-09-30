@@ -1,6 +1,6 @@
 import os
 
-DEBUG = False
+DEBUG = True
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT_DIR = os.path.dirname(BASE_DIR)
@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
 
     # 'filebrowser',
-    'grappelli',
+    # 'grappelli',
     'django.contrib.admin',
     # 'django.contrib.admindocs',
 

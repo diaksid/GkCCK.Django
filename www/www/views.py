@@ -26,7 +26,7 @@ def http500(request):
 
 class RobotsView(TemplateView):
     content_type = 'text/plain'
-    template_name = 'proj/robots.html'
+    template_name = 'proj/robots.disallow.html'
 
 
 class PartnersJSONAjaxView(views.JSONResponseMixin, views.AjaxResponseMixin,
