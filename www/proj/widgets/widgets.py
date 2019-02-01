@@ -24,7 +24,7 @@ class EnclosedInput(forms.TextInput):
             value = format_html('<span class="{}"></span>', value)
         return format_html('<span class="input-group-addon">{}</span>', value)
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         output = super(EnclosedInput, self).render(name, value, attrs)
         if self.prepend:
             addon = self.enclose(self.prepend)
@@ -45,7 +45,7 @@ class AutosizedTextarea(forms.Textarea):
     def media(self):
         return forms.Media(js=[static('admin/js/jquery.autosize.min.js')])
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         output = super(AutosizedTextarea, self).render(name, value, attrs)
         script = format_html(
             "<script>(jQuery||django.jQuery)('#id_{}').autosize()</script>",
